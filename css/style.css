@@ -1,6 +1,8 @@
 .formacion-container, .puntaje-container {
-  position: absolute;
+  position: relative;
   background-color: #db9c55;
+  margin-bottom: 25px;
+  border-radius: 15px 0px 0px 15px;
 }
 .formacion-container ul li, .puntaje-container ul li {
   color: white;
@@ -12,10 +14,9 @@
 
 * {
   box-sizing: border-box;
-}
-
-body {
-  background-image: url(../imagenes/soccerBG.jpg);
+  padding: 0;
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 h1 {
@@ -26,6 +27,24 @@ h1 {
   color: white;
 }
 
+.capitanes-section {
+  background-image: url(../imagenes/capsBG.jpg);
+  background-position: 0 1100.209px;
+  border-bottom: 1px solid white;
+}
+.capitanes-section .capitanes-container .img_caps-container {
+  width: 25%;
+}
+.capitanes-section .capitanes-container .img_caps-container :hover {
+  transform: scale(1.12);
+  transition: all 0.7s;
+}
+.capitanes-section .capitanes-container .img_caps-container img {
+  width: 100%;
+  height: 75%;
+  object-fit: contain;
+}
+
 h2 {
   color: white;
   background-color: gray;
@@ -33,24 +52,32 @@ h2 {
   margin-bottom: 0px !important;
 }
 
+.row {
+  background-image: url(../imagenes/soccerBG.jpg);
+  background-position: 0 1100.209px;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.row div {
+  padding: 0;
+}
+
 .puntaje-container {
   right: 0;
-  border-radius: 0px 0px 0px 15px;
+  border-top: none;
   border: 1px solid white;
+  border-radius: 0px 0px 0px 15px;
 }
 
 .formacion-container {
-  left: 0;
-  border-radius: 0px 15px 0px 0px;
+  float: right;
   border: 1px solid white;
+  width: 50%;
+  border-radius: 15px 0px 0px 15px;
 }
 
 .planillaFutbol-container {
   text-align: center;
-}
-.planillaFutbol-container img {
-  width: 1200px;
-  height: 700px;
 }
 
 .jugadores-container {

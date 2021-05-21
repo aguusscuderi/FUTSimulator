@@ -2,10 +2,13 @@
 
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 body {
-    background-image: url(../imagenes/soccerBG.jpg);
+
 }
 
 h1 {
@@ -16,6 +19,27 @@ h1 {
     color: white
 }
 
+.capitanes-section {
+    background-image: url(../imagenes/capsBG.jpg);
+    background-position: 0 1100.209px;
+    border-bottom: 1px solid white;
+    .capitanes-container {
+        .img_caps-container {
+            width: 25%;
+            :hover {
+                transform: scale(1.12);
+                transition: all .7s;
+            }
+            
+            img {
+                width: 100%;
+                height: 75%;
+                object-fit: contain;
+            }
+        } 
+    }
+}
+
 h2 {
     color: white;
     background-color: gray;
@@ -23,26 +47,34 @@ h2 {
     margin-bottom: 0px !important;
 }
 
+.row {
+    background-image: url(../imagenes/soccerBG.jpg);
+    background-position: 0 1100.209px;
+    background-attachment: fixed;
+    background-size: cover;
+    div {
+        padding: 0
+    }
+}
+
 .puntaje-container {
  @extend %posiciones-formaciones;
     right: 0;
-    border-radius: 0px 0px 0px 15px;
+    border-top: none;
     border: 1px solid white;
+    border-radius: 0px 0px 0px 15px;
 }
 
 .formacion-container {
 @extend  %posiciones-formaciones;
-    left: 0;
-    border-radius: 0px 15px 0px 0px;
+    float: right;
     border: 1px solid white;
+    width: 50%;
+    border-radius: 15px 0px 0px 15px;
 }
 
 .planillaFutbol-container {
     text-align: center;
-    img {
-        width: 1200px;
-        height: 700px;
-    }
 }
 
 .jugadores-container {
