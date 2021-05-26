@@ -1,5 +1,5 @@
 
-// Inicio del programa, recuperacion/indagacion de datos, creacion de objetos.
+// Inicio del programa, recuperacion/indagacion de datos. Creacion de JUGADORES.
 
 let cantidad = 2;
 
@@ -51,6 +51,4 @@ function inicio() {
 
 inicio()
 
-
-console.table(arrayJugadores)
 

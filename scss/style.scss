@@ -2,8 +2,8 @@
 
 * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
@@ -13,16 +13,25 @@ body {
 
 h1 {
     text-align: center;
-    border: 1px solid white;
-    background-color: black;
+    font-weight: bold !important;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 51%, rgba(11,8,125,1) 85%, rgba(12,6,129,1) 100%);
     padding: 15px;
-    color: white
+    color: white;
+    margin-bottom: 0px !important
+}
+
+h3 {
+    color: white;
 }
 
 .capitanes-section {
     background-image: url(../imagenes/capsBG.jpg);
     background-position: 0 1100.209px;
     border-bottom: 1px solid white;
+    p {
+        color: white;
+    }
     .capitanes-container {
         .img_caps-container {
             width: 25%;
@@ -42,9 +51,9 @@ h1 {
 
 h2 {
     color: white;
-    background-color: gray;
     padding: 10px;
     margin-bottom: 0px !important;
+    background-color: #0b087d;;
 }
 
 .row {
@@ -52,6 +61,7 @@ h2 {
     background-position: 0 1100.209px;
     background-attachment: fixed;
     background-size: cover;
+    margin: 0px !important;
     div {
         padding: 0
     }
@@ -62,30 +72,31 @@ h2 {
     right: 0;
     border-top: none;
     border: 1px solid white;
-    border-radius: 0px 0px 0px 15px;
+    border-radius: 0px 15px 0px 0px;
 }
 
 .formacion-container {
 @extend  %posiciones-formaciones;
-    float: right;
     border: 1px solid white;
     width: 50%;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 0px 15px 15px 0px;
 }
 
 .planillaFutbol-container {
     text-align: center;
 }
 
-.jugadores-container {
-    background-color: gray;
-    width: 100%;
-    div {
-        height: 50px;
-        width: 200px;
-        margin-bottom: 10px;
-        background-color: black;
-        cursor: pointer;
+h4 {
+    color: white;
+    font-weight: bold !important;
+}
 
+.jugador-container {
+    width: 100%;
+    img {
+        height: 350px;
+        width: 275px;
+        cursor: pointer;
+        
     }
 }
