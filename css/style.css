@@ -44,8 +44,12 @@ h3 {
   width: 25%;
 }
 .capitanes-section .capitanes-container .img_caps-container :hover {
-  transform: scale(1.12);
+  transform: scale(1.1);
   transition: all 0.7s;
+}
+.capitanes-section .capitanes-container .img_caps-container p {
+  padding: 30px;
+  background-color: black;
 }
 .capitanes-section .capitanes-container .img_caps-container img {
   width: 100%;
