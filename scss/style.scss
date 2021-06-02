@@ -80,17 +80,13 @@ h2 {
 
 .puntaje-container {
  @extend %posiciones-formaciones;
-    right: 0;
-    border-top: none;
     border: 1px solid white;
-    border-radius: 0px 15px 0px 0px;
 }
 
 .formacion-container {
 @extend  %posiciones-formaciones;
     border: 1px solid white;
-    width: 50%;
-    border-radius: 0px 15px 15px 0px;
+    height: 100%;
 }
 
 .planillaFutbol-container {

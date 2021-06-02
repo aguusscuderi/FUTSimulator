@@ -1,7 +1,6 @@
 .formacion-container, .puntaje-container {
   position: relative;
   background-color: #0b087d;
-  margin-bottom: 25px;
 }
 .formacion-container ul li, .puntaje-container ul li {
   color: white;
@@ -79,16 +78,12 @@ h2 {
 }
 
 .puntaje-container {
-  right: 0;
-  border-top: none;
   border: 1px solid white;
-  border-radius: 0px 15px 0px 0px;
 }
 
 .formacion-container {
   border: 1px solid white;
-  width: 50%;
-  border-radius: 0px 15px 15px 0px;
+  height: 100%;
 }
 
 .planillaFutbol-container {

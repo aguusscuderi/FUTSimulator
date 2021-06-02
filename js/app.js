@@ -55,11 +55,15 @@ inicio()
 
 //Eventos
 
+//MANIPULACION DE CAPITANES Y FUNCIONES
+
 const captains = document.querySelectorAll('.captain') //llamo todos lo elementos html que compartan la clase .captain
 const captainsArr = Array.from(captains)
 
 const containers = document.querySelectorAll('.img_caps-container') //llamo todos los elementos html que compartan la clase img_caps-container
 const containersArr = Array.from(containers)
+
+const captainNewSite = document.querySelector('#capitanSeleccionado')
 
 //con un foreach, recorro cada elemento del array que se crea al llamar a todos los .captain
 captainsArr.forEach(el => {
@@ -99,4 +103,133 @@ captainsArr.forEach(el => {
         const captainBenefitDelete = document.querySelector('.benefitText')
         captainBenefitDelete.remove()
     })
+
+
+    
+
+    /*
+    //SELECCION DE CAPITAN
+    //EN PROGRESO 
+    el.addEventListener('click', function(){
+        let captainAlert
+        let estructuraCapitan
+
+        switch (el.id) {
+            case 'messi':
+            captainAlert = confirm('¿Deseas elegir a MESSI como CAPITAN?')
+                if (captainAlert == true) {
+                    estructuraCapitan = document.create
+                }
+
+             break
+            
+             case 'ronald o': 
+             captainAlert = confirm
+        }
+    })*/
+
 })
+
+
+
+
+
+
+
+//COMPLEMENTARIO EVENTOS!!
+    const crear = document.querySelector('#see')
+    const nocrear = document.querySelector('#unsee')
+    const field = document.querySelector('#field')
+    const fieldFirstPosition = document.querySelector('.positionsDivContainer')
+
+    let i = 0;
+    const arrayContador = []
+    
+    nocrear.addEventListener('click', function(){
+        arrayContador.shift()
+        console.log(arrayContador.length)
+        field.remove()
+        const newFieldRemove = document.querySelector('.recreatedField')
+        newFieldRemove.remove()
+    })
+
+
+
+    crear.addEventListener('click', function(){
+        i++
+        arrayContador.push(i)
+        console.log(arrayContador.length)
+        console.log(arrayContador)
+        let fieldPosition = document.createElement('div')
+        fieldPosition.setAttribute('class', 'recreatedField')
+        fieldPosition.innerHTML += `
+        <img src="imagenes/planillaFutbol.jpg" id="field" class="img-fluid" alt="">
+        `
+        fieldFirstPosition.appendChild(fieldPosition)  
+        
+})
+            /*
+            crear.addEventListener('click',function(){
+            i++
+            arrayContador.push(i)
+            console.log(arrayContador.length)
+            do{
+                let fieldPosition = document.createElement('div')
+                fieldPosition.setAttribute('class', 'recreatedField')
+                fieldPosition.innerHTML += `
+                <img src="imagenes/planillaFutbol.jpg" id="field" class="img-fluid" alt="">
+                `
+                fieldFirstPosition.appendChild(fieldPosition)  
+            }while(arrayContador.length<=1)
+            }
+            */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////
+/*
+function capitanSeleccionado(array){
+    captainNewSite.innerHTML = ''
+    array.forEach((capitanElegido)=>){
+        let div = document.createElement('div')
+        div.innerHTML += `
+
+        
+        `
+    }
+
+}*/
+
+
+
