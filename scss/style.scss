@@ -37,12 +37,12 @@ h3 {
         .img_caps-container {
             width: 25%;
             padding: 15px;
-            //height: 580px;
+            height: 580px;
             @media screen and (max-width: 480px) {
                 //height: auto;
             }
             :hover {
-                transform: scale(1.1);
+                transform: scale(1.123);
                 transition: all .7s;
             }
             

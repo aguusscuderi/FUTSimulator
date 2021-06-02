@@ -55,80 +55,48 @@ inicio()
 
 //Eventos
 
-//MESSI
-const messi = document.querySelector('#messi')
+const captains = document.querySelectorAll('.captain') //llamo todos lo elementos html que compartan la clase .captain
+const captainsArr = Array.from(captains)
 
-const selectedMessi = () => {
-    const div = document.querySelector('#messi-div')
-    let beneficio = document.createElement('p')
-    beneficio.setAttribute('class', 'beneficio')
-    beneficio.innerHTML = 'Elegir a MESSI otorga a tus jugadores un 20% mas de AGILIDAD'
-    div.appendChild(beneficio)
-}
+const containers = document.querySelectorAll('.img_caps-container') //llamo todos los elementos html que compartan la clase img_caps-container
+const containersArr = Array.from(containers)
 
- const unselectedMessi = () => {
-     const beneficioDelete = document.querySelector('.beneficio')
-     beneficioDelete.remove()
- }
+//con un foreach, recorro cada elemento del array que se crea al llamar a todos los .captain
+captainsArr.forEach(el => {
+    el.addEventListener('mouseenter', function(){ //funcion que se ejecuta al hacer hover
+        let captainBenefit = document.createElement('p')
+        switch(el.id) {
+            case 'messi': 
+            captainBenefit.innerHTML = 'Elegir a MESSI otorga a tus jugadores un 20% mas de AGILIDAD'
+            containersArr[0].appendChild(captainBenefit)
+            captainBenefit.setAttribute('class', 'benefitText')
+            break
 
-messi.addEventListener('mouseenter', selectedMessi)
-messi.addEventListener('mouseleave', unselectedMessi)
+            case 'ronaldo':
+            captainBenefit.innerHTML = 'Elegir a Ronaldo otorga a tus jugadores un 20% mas de VELOCIDAD'
+            containersArr[1].appendChild(captainBenefit)
+            captainBenefit.setAttribute('class', 'benefitText')           
+            break
+         
 
-//RONALDO
-const ronaldo = document.querySelector('#ronaldo')
+            case 'vandijk':
+            captainBenefit.innerHTML = 'Elegir a VAN DIJK otorga a tus jugadores un 20% mas de FUERZA'
+            containersArr[2].appendChild(captainBenefit)
+            captainBenefit.setAttribute('class', 'benefitText')
+            break
+          
 
-const selectedRonaldo = () => {
-    const div = document.querySelector('#ronaldo-div')
-    let beneficio = document.createElement('p')
-    beneficio.setAttribute('class', 'beneficio')
-    beneficio.innerHTML = 'Elegir a RONALDO otorga a tus jugadores un 20% mas de VELOCIDAD'
-    div.appendChild(beneficio)
-}
+            case 'alisson':
+            captainBenefit.innerHTML = 'Elegir a ALISSON otorga a tus jugadores un 20% mas de REFLEJOS'
+            containersArr[3].appendChild(captainBenefit)
+            captainBenefit.setAttribute('class', 'benefitText')
+            break     
+        }
 
- const unselectedRonaldo = () => {
-     const beneficioDelete = document.querySelector('.beneficio')
-     beneficioDelete.remove(ronaldo)
- }
+    })
 
-
-ronaldo.addEventListener('mouseenter', selectedRonaldo)
-ronaldo.addEventListener('mouseleave', unselectedRonaldo)
-
-//VANDIJK
-const vandijk = document.querySelector('#vandijk')
-
-const selectedVandijk = () => {
-    const div = document.querySelector('#vandijk-div')
-    let beneficio = document.createElement('p')
-    beneficio.setAttribute('class', 'beneficio')
-    beneficio.innerHTML = 'Elegir a VANDIJK otorga a tus jugadores un 20% mas de FUERZA'
-    div.appendChild(beneficio)
-}
-
- const unselectedVandijk = () => {
-     const beneficioDelete = document.querySelector('.beneficio')
-     beneficioDelete.remove()
- }
-
-vandijk.addEventListener('mouseenter', selectedVandijk)
-vandijk.addEventListener('mouseleave', unselectedVandijk)
-
-//ALISSON
-const alisson = document.querySelector('#alisson')
-
-const selectedAlisson = () => {
-    const div = document.querySelector('#alisson-div')
-    let beneficio = document.createElement('p')
-    beneficio.setAttribute('class', 'beneficio')
-    beneficio.innerHTML = 'Elegir a ALISSON otorga a tus jugadores un 20% mas de REFLEJOS'
-    div.appendChild(beneficio)
-}
-
- const unselectedAlisson = () => {
-     const beneficioDelete = document.querySelector('.beneficio')
-     beneficioDelete.remove()
- }
-
-alisson.addEventListener('mouseenter', selectedAlisson)
-alisson.addEventListener('mouseleave', unselectedAlisson)
-
+    el.addEventListener('mouseleave', function() { //funcion que se ejecuta al salir del hover
+        const captainBenefitDelete = document.querySelector('.benefitText')
+        captainBenefitDelete.remove()
+    })
+})
