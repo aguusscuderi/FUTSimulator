@@ -58,6 +58,18 @@ h3 {
   height: 70%;
   object-fit: contain;
 }
+.capitanes-section .capitanes-container .img_caps-container button {
+  margin-top: 5px;
+  background-color: transparent;
+  padding: 5px;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+.capitanes-section .capitanes-container .img_caps-container button :hover {
+  background-color: #0b087d;
+  transition: all 0.5s;
+}
 
 h2 {
   color: white;

@@ -56,6 +56,19 @@ h3 {
                 height: 70%;
                 object-fit: contain;
             }
+
+            button {
+                margin-top: 5px;
+                background-color: transparent;
+                padding: 5px;
+                color: white;
+                border: none;
+                border-bottom: 1px solid white;
+               :hover {
+                   background-color: rgba(11,8,125,1);
+                   transition: all .5s;
+               }
+            }
         } 
     }
 }
