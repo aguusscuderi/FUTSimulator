@@ -91,6 +91,7 @@ h2 {
 
 .puntaje-container {
   border: 1px solid white;
+  height: 100%;
 }
 
 .formacion-container {
@@ -98,8 +99,20 @@ h2 {
   height: 100%;
 }
 
+.capitanElegido-div {
+  background-color: #0b087d;
+  border: 1px solid white;
+}
+.capitanElegido-div .currentCap h3 {
+  overflow: hidden;
+}
+.capitanElegido-div .currentCap p {
+  color: white;
+}
+
 .planillaFutbol-container {
   text-align: center;
+  padding: 5px;
 }
 
 h4 {

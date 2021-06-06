@@ -60,41 +60,106 @@ inicio()
 ////////////////////////////////////////////////
 
 let captainsArray = [
-    {id: 1, nombre: 'LIONEL', apellido: 'messi', img: 'imagenes/messiCap.png'},
-    {id: 2, nombre: 'CRISTIANO', apellido: 'ronaldo', img: 'imagenes/ronaldoCap.png'},
-    {id: 3, nombre: 'VIRGIL', apellido: 'vandijk', img: 'imagenes/kanteCap.png'},
-    {id: 4, nombre: 'BECKER', apellido: 'alisson', img: 'imagenes/alissonCap.png'}
+    {id: 1, nombre: 'LIONEL', apellido: 'messi', img: 'imagenes/messiCap.png', beneficio: 'AGILIDAD'},
+    {id: 2, nombre: 'CRISTIANO', apellido: 'ronaldo', img: 'imagenes/ronaldoCap.png', beneficio: 'VELOCIDAD'},
+    {id: 3, nombre: 'VIRGIL', apellido: 'vandijk', img: 'imagenes/kanteCap.png', beneficio: 'FUERZA'},
+    {id: 4, nombre: 'BECKER', apellido: 'alisson', img: 'imagenes/alissonCap.png', beneficio: 'REFLEJOS'}
 ] 
 
-const captainsDiv = document.querySelector('.capitanes-section')
+const captainsDiv = document.querySelector('.capitanes-container')
 
-capitanSeleccionado(captainsArray)
 
 function capitanSeleccionado(array){
-    let div = document.createElement('div')
-    div.classList.add('capitanes-container', 'd-flex', 'flex-wrap', 'flex-row', 'align-content-center')
-
-    array.forEach((capitanElegido)=>{
+    array.forEach((el)=>{
+        let div = document.createElement('div')
+        div.classList.add('img_caps-container')
+        
         div.innerHTML += `
-        <div class="img_caps-container" id="${capitanElegido.apellido}-div">
-            <img src="${capitanElegido.img}" id="${capitanElegido.apellido}" class="img-fluid captain" alt="">
-            <button id="${capitanElegido.id}" class="captainButton"> ELEGIR CAPITAN </button>
-        </div>
+            <img src=${el.img} id=${el.apellido} class="img-fluid captain" alt="">
+            <button id=${el.id} class="captainButton"> ELEGIR CAPITAN </button>
         `
         captainsDiv.appendChild(div) 
+
+        const button = document.getElementById(`${el.id}`)
+      
+        button.addEventListener('click', ()=>{
+            const confirmacion = confirm(`¿Deseas elegir a ${el.apellido} como tu CAPITAN?`)
+            if(confirmacion == true){
+                alert('Enhorabuena! Has seleccionado tu CAPITAN, puedes chequearlo en "STATS & FORMACION"')
+                seleccionCapitan(`${el.id}`)
+            }else{
+                alert('Entendido! Puedes elegir otro CAPITAN')
+            }
+            
+         })
     })
 
 }
 
+capitanSeleccionado(captainsArray)
 
-/////////////////////////////////////////
-// MANIPULACION DE CAPITANES Y FUNCIONES //
-/////////////////////////////////////////
+    //////////////////////////
+    // SELECCION DE CAPITAN //
+    /////////////////////////
+    //EN PROGRESO
+
+
+    let capitanElegido = []
+    const capitanElegidoDiv = document.querySelector('#capitanSeleccionado')
+
+    function seleccionCapitan (id) {
+        const validar = capitanElegido.some(x => x.id == id)
+        if(validar){
+            alert('ATENCION! Ya tienes un capitan elegido, para modificarlo borra el que ya tienes!')
+        }else{
+            let capitanAgregar = captainsArray.filter(el => el.id == id)[0]
+            capitanElegido.push(capitanAgregar)
+            console.log(capitanAgregar)
+
+            const div = document.createElement('div')
+            div.classList.add('currentCap')
+            div.innerHTML += `
+            <h3> TU CAPITAN </h3>
+
+            <img src="${capitanAgregar.img}" class="img-fluid" id="" alt="">
+            <p>Tu capitan ${capitanAgregar.nombre} aumenta un 20% ${capitanAgregar.beneficio}</p>
+            <button id="eliminar${capitanAgregar.id}" class="boton_eliminar-capitan"><i class="far fa-trash-alt"></i></button>
+            `
+            capitanElegidoDiv.appendChild(div) 
+
+            const botonEliminar = document.getElementById(`eliminar${capitanAgregar.id}`)
+            console.log(botonEliminar)
+
+            botonEliminar.addEventListener('click', ()=>{
+                const confirmar = confirm('ATENCION! Deseas eliminar a tu CAPITAN?')
+                if(confirmar == true){
+                    botonEliminar.parentElement.remove()
+                }else{}
+            }) 
+        }
+    
+   
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+// BENEFICIO DE CAPITANES AL HACER HOVER FUNCIONES //
+////////////////////////////////////////////////////
 
 const captains = document.querySelectorAll('.captain') //llamo todos lo elementos html que compartan la clase .captain
 const captainsArr = Array.from(captains)
 
-console.log(captainsArr)
+//console.log(captainsArr)
 
 const containers = document.querySelectorAll('.img_caps-container') //llamo todos los elementos html que compartan la clase img_caps-container
 const containersArr = Array.from(containers)
@@ -140,6 +205,33 @@ captainsArr.forEach(el => {
 
 })
 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -156,7 +248,7 @@ captainsArr.forEach(el => {
     const field = document.querySelector('#field')
     const fieldFirstPosition = document.querySelector('.positionsDivContainer')
 
-    let i = 0;
+    let creado = 'Creaste un elemento';
     const arrayContador = []
     
     nocrear.addEventListener('click', function(){
@@ -170,18 +262,20 @@ captainsArr.forEach(el => {
 
 
     crear.addEventListener('click', function(){
-        i++
-        arrayContador.push(i)
+        
+        arrayContador.push(creado)
         console.log(arrayContador.length)
-        console.log(arrayContador)
         let fieldPosition = document.createElement('div')
         fieldPosition.setAttribute('class', 'recreatedField')
         fieldPosition.innerHTML += `
         <img src="imagenes/planillaFutbol.jpg" id="field" class="img-fluid" alt="">
         `
         fieldFirstPosition.appendChild(fieldPosition)  
-        
 })
+
+
+
+
             /*
             crear.addEventListener('click',function(){
             i++

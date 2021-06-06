@@ -10,6 +10,8 @@
         <link rel="stylesheet" 
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
         crossorigin="anonymous">
+    <!--FONT AWESOME-->
+        <script src="https://kit.fontawesome.com/446d31feca.js" crossorigin="anonymous"></script>
     <!--FONTS-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap" rel="stylesheet">
@@ -20,8 +22,8 @@
     <section class="capitanes-section text-center">
         <h3> Selecciona TU CAPITAN</h3>
         <p>Nota: Cada CAPITAN otorga distintos beneficios en tus jugadores.</p>
-       <!-- <div class="capitanes-container d-flex flex-wrap flex-row align-content-center">
-            <div class="img_caps-container" id="messi-div">
+        <div class="capitanes-container d-flex flex-wrap flex-row align-content-center">
+           <!-- <div class="img_caps-container" id="messi-div">
                 <img src="imagenes/messiCap.png" id="messi" class="img-fluid captain " alt="">
             </div>
             <div class="img_caps-container" id="ronaldo-div">
@@ -32,8 +34,8 @@
             </div>
             <div class="img_caps-container" id="alisson-div">
                 <img src="imagenes/alissonCap.png" id="alisson" class="img-fluid captain alisson" alt="">
-            </div>!
-        </div>!-->
+            </div>-->
+        </div>
     </section>
 
 
@@ -43,7 +45,7 @@
                 <div class="card">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn btn-link btn-block text-left text-center text-light" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         ELEGI TUS JUGADORES
                     </button>
                     </h2>
@@ -112,7 +114,7 @@
                 <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn btn-link btn-block text-left collapsed text-center text-light" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         STATS & FORMACION
                     </button>
                     </h2>
@@ -148,8 +150,8 @@
                                     </div> 
                                 </div>
                             
-                                <div id="capitanSeleccionado" class="col-sm-12 col-md-4 col-lg-4">
-                                    
+                                <div id="capitanSeleccionado" class="col-sm-12 col-md-4 col-lg-4 capitanElegido-div">
+                                   <!-- SECCION CREADA MEDIANTE JAVASCRIPT-->
                                 </div>
                             </div>
                         </section>   
@@ -159,14 +161,33 @@
                 <div class="card">
                 <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                    <button class="btn btn-link btn-block text-left collapsed text-center text-light" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        CREA TU JUGADOR!
                     </button>
                     </h2>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
-                    And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                        <form action="/server/" method="POST" >
+                            <div>
+                                <label for="name">NOMBRE</label>
+                                <input type="text" id="name">
+                            </div>
+                            <div>
+                                <label for="surname">APELLIDO</label>
+                                <input type="text" id="surname">
+                            </div>
+                            <div>
+                                <label for="rating">MEDIA</label>
+                                <input type="number" id="rating">
+                            </div>
+                            <div>
+                                <b>STATS</b>
+
+                                
+                            </div>
+
+                        </form>
                     </div>
                 </div>
                 </div>
