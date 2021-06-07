@@ -1,7 +1,7 @@
 
 // Inicio del programa, recuperacion/indagacion de datos. Creacion de JUGADORES.
 
-let cantidad = 2;
+/*let cantidad = 2;
 
 function plantelInicial (nombre, apellido, posicion, piernaHabil) {
     this.nombre=nombre;
@@ -49,15 +49,13 @@ function inicio() {
     }
 }
 
-inicio()
+inicio()*/
 
 
-
-
-    //EVENTOS 
-/////////////////////////////////////////////////
+     
+///////////////////////////////////////////////////
 // CREACION DINAMICA DE CAPITANES MEDIANTE ARRAY //
-////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
 let captainsArray = [
     {id: 1, nombre: 'LIONEL', apellido: 'messi', img: 'imagenes/messiCap.png', beneficio: 'AGILIDAD'},
@@ -101,8 +99,6 @@ capitanSeleccionado(captainsArray)
     //////////////////////////
     // SELECCION DE CAPITAN //
     /////////////////////////
-    //EN PROGRESO
-
 
     let capitanElegido = []
     const capitanElegidoDiv = document.querySelector('#capitanSeleccionado')
@@ -205,44 +201,134 @@ captainsArr.forEach(el => {
 
 })
 
+
+//////////////////////////
+// CREADOR DE JUGADORES //
+/////////////////////////
+
+    //CREANDO EL FORMULARIO
+    const creadorCollapse = document.querySelector('#playerCreator-collapse') 
+    const jugadoresCreados = []
+
+    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad) {
+        this.nombre=nombre,
+        this.apellido=apellido,
+        this.media=media,
+        this.velocidad=velocidad,
+        this.fuerza=fuerza,
+        this.reflejos=reflejos,
+        this.agilidad=agilidad
+    }
+
+    creacionDeJugador(tuJugador)
+
+    function creacionDeJugador () {
+        let creador = document.createElement('div')
+        creador.innerHTML += `
+                <form action="/server/" method="POST" id="playerCreator-form" class="createPlayer-form text-center">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div>
+                                <label for="nombre">NOMBRE</label>
+                                <input type="text" name="nombre" id="nombre">
+                            </div>
+                            <div>
+                                <label for="apellido">APELLIDO</label>
+                                <input type="text" name="apellido" id="apellido">
+                            </div>
+                            <div>
+                                <label for="media">MEDIA</label>
+                                <input type="number" name="media" id="media">
+                            </div> 
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div>
+                                <b>STATS</b>
+                                <div>
+                                    <label for="velocidad">VELOCIDAD</label>
+                                    <input type="number" name="velocidad" id="velocidad">
+                                </div>
+                                <div>
+                                    <label for="fuerza">FUERZA</label>
+                                    <input type="number" name="fuerza" id="fuerza">
+                                </div>
+                                <div>
+                                    <label for="reflejos">REFLEJOS</label>
+                                    <input type="number" name="reflejos" id="reflejos">
+                                </div>
+                                <div>
+                                    <label for="agilidad">AGILIDAD</label>
+                                    <input type="number" name="agilidad" id="agilidad">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                       <button id="" type="submit">Enviar</button>
+                </form>
+        `
+        creadorCollapse.appendChild(creador)
+    }
+
+    const form = document.getElementById('playerCreator-form')
+
+    form.addEventListener('submit', (event)=> {
+        event.preventDefault();
+        jugadoresCreados.push(new tuJugador(
+            form.querySelector('#nombre').value,
+            form.querySelector('#apellido').value,
+            form.querySelector('#media').value,
+            form.querySelector('#velocidad').value,
+            form.querySelector('#fuerza').value,
+            form.querySelector('#reflejos').value,
+            form.querySelector('#agilidad').value
+        
+        ))
+
+        
+        //JSON LOCALSTORAGE SAVING
+        const jugadoresJSON = JSON.stringify(jugadoresCreados)
+        localStorage.setItem('jugadores_base', jugadoresJSON)
+
+   })
+
+   /*function recuperacion () { 
+    let recuperacion = JSON.parse(localStorage.getItem('jugadores_base'));
+    recuperacion.forEach(element => {
+        arrayJugadores.push(element)
+    });
+   }
+
+
+   function startJSON() {
+       if(localStorage.jugadores_base){
+            const confirm = confirm('Hay DATOS en la BASE, deseas recuperarlos?')
+            switch(confirm){
+                case true:
+                    recuperacion()
+                    break
+                case false:
+                    break    
+            }
+       }else{
+
+       }
+   }*/
+
+   
+
+
     
 
 
 
+    
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//COMPLEMENTARIO EVENTOS!!
-//BOTONES/CREACION Y ELIMINACION DE CAMPO DE JUEGO
+//////////////////////////////////////////////////////
+// BOTONES/CREACION Y ELIMINACION DE CAMPO DE JUEGO //
+//////////////////////////////////////////////////////
     const crear = document.querySelector('#see')
     const nocrear = document.querySelector('#unsee')
     const field = document.querySelector('#field')
@@ -322,22 +408,6 @@ captainsArr.forEach(el => {
 
 
 
-
-
-
-///////////////////////////////////////////////////
-/*
-function capitanSeleccionado(array){
-    captainNewSite.innerHTML = ''
-    array.forEach((capitanElegido)=>){
-        let div = document.createElement('div')
-        div.innerHTML += `
-
-        
-        `
-    }
-
-}*/
 
 
 
