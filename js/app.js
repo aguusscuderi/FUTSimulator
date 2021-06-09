@@ -104,7 +104,8 @@ capitanSeleccionado(captainsArray)
     const capitanElegidoDiv = document.querySelector('#capitanSeleccionado')
 
     function seleccionCapitan (id) {
-        const validar = capitanElegido.some(x => x.id == id)
+        //const validar = capitanElegido.some(x => x.id == id)
+        const validar = capitanElegido.some(x => x)
         if(validar){
             alert('ATENCION! Ya tienes un capitan elegido, para modificarlo borra el que ya tienes!')
         }else{
@@ -130,18 +131,13 @@ capitanSeleccionado(captainsArray)
                 const confirmar = confirm('ATENCION! Deseas eliminar a tu CAPITAN?')
                 if(confirmar == true){
                     botonEliminar.parentElement.remove()
+                    capitanElegido.shift()
                 }else{}
             }) 
         }
     
    
     }
-
-
-
-
-
-
 
 
 
@@ -207,100 +203,93 @@ captainsArr.forEach(el => {
 /////////////////////////
 
     //CREANDO EL FORMULARIO
-    const creadorCollapse = document.querySelector('#playerCreator-collapse') 
+    //const creadorCollapse = document.querySelector('#playerCreator-collapse') 
     const jugadoresCreados = []
+    const form = document.getElementById('playerCreator-form')
 
-    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad) {
+    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad, id) {
         this.nombre=nombre,
         this.apellido=apellido,
         this.media=media,
         this.velocidad=velocidad,
         this.fuerza=fuerza,
         this.reflejos=reflejos,
-        this.agilidad=agilidad
+        this.agilidad=agilidad,
+        this.id = id
     }
-
-    creacionDeJugador(tuJugador)
-
-    function creacionDeJugador () {
-        let creador = document.createElement('div')
-        creador.innerHTML += `
-                <form action="/server/" method="POST" id="playerCreator-form" class="createPlayer-form text-center">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div>
-                                <label for="nombre">NOMBRE</label>
-                                <input type="text" name="nombre" id="nombre">
-                            </div>
-                            <div>
-                                <label for="apellido">APELLIDO</label>
-                                <input type="text" name="apellido" id="apellido">
-                            </div>
-                            <div>
-                                <label for="media">MEDIA</label>
-                                <input type="number" name="media" id="media">
-                            </div> 
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div>
-                                <b>STATS</b>
-                                <div>
-                                    <label for="velocidad">VELOCIDAD</label>
-                                    <input type="number" name="velocidad" id="velocidad">
-                                </div>
-                                <div>
-                                    <label for="fuerza">FUERZA</label>
-                                    <input type="number" name="fuerza" id="fuerza">
-                                </div>
-                                <div>
-                                    <label for="reflejos">REFLEJOS</label>
-                                    <input type="number" name="reflejos" id="reflejos">
-                                </div>
-                                <div>
-                                    <label for="agilidad">AGILIDAD</label>
-                                    <input type="number" name="agilidad" id="agilidad">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                       <button id="" type="submit">Enviar</button>
-                </form>
-        `
-        creadorCollapse.appendChild(creador)
-    }
-
-    const form = document.getElementById('playerCreator-form')
-
-    form.addEventListener('submit', (event)=> {
+    
+   function formData(id) {
+        form.addEventListener('submit', (event)=> {
         event.preventDefault();
         jugadoresCreados.push(new tuJugador(
-            form.querySelector('#nombre').value,
-            form.querySelector('#apellido').value,
-            form.querySelector('#media').value,
-            form.querySelector('#velocidad').value,
-            form.querySelector('#fuerza').value,
-            form.querySelector('#reflejos').value,
-            form.querySelector('#agilidad').value
-        
-        ))
+                form.querySelector('#nombre').value,
+                form.querySelector('#apellido').value,
+                form.querySelector('#media').value,
+                form.querySelector('#velocidad').value,
+                form.querySelector('#fuerza').value,
+                form.querySelector('#reflejos').value,
+                form.querySelector('#agilidad').value,
+                form.querySelector('#id').value
+            ))
 
-        
-        //JSON LOCALSTORAGE SAVING
-        const jugadoresJSON = JSON.stringify(jugadoresCreados)
-        localStorage.setItem('jugadores_base', jugadoresJSON)
+        //JSON LOCALSTORAGE SAVING and VERIFICATION
+        let verificacion = jugadoresCreados.some(x => x.id == id)
+        if(verificacion){
+            alert(`Uno de tus JUGADORES ya posee el ID por favor`)
+        }else{
+            const jugadoresJSON = JSON.stringify(jugadoresCreados)
+            localStorage.setItem('jugadores_base', jugadoresJSON)
+        }       
 
-   })
+      }) 
+    
+    }
 
-   /*function recuperacion () { 
-    let recuperacion = JSON.parse(localStorage.getItem('jugadores_base'));
-    recuperacion.forEach(element => {
-        arrayJugadores.push(element)
-    });
-   }
+     function recuperacion () { 
+        let playersJSON = JSON.parse(localStorage.getItem('jugadores_base'));
+   
+            jugadoresCreados.push(playersJSON)
+      
+    }
+
+    function formDataexe () {
+       recuperacion()
+       jugadoresCreados.forEach(el=>formData(el.id))
+    }
+
+    formDataexe()
+
+   /*
+   function recuperacion () { 
+        let recuperacion = JSON.parse(localStorage.getItem('jugadores_base'));
+        recuperacion.forEach(element => {
+            arrayJugadores.push(element)
+        });
+    }
+   
+   function formDataexe () {
+    let recorrido = jugadoresCreados.forEach((el) => el.id)
+    if(localStorage.jugadores_base){
+        let confirm = confirm('Hay JUGADORES CREADOS en la BASE, quieres recuperarlos?')
+        if(confirm == true){
+            recuperacion()
+            formData(recorrido)
+        }else{
+            formData(recorrido)
+        }
+    }else{
+        formData(recorrido)
+    }
+}*/
 
 
-   function startJSON() {
+
+
+   
+
+
+
+  /*function startJSON() {
        if(localStorage.jugadores_base){
             const confirm = confirm('Hay DATOS en la BASE, deseas recuperarlos?')
             switch(confirm){
