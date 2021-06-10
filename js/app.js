@@ -284,6 +284,9 @@ captainsArr.forEach(el => {
         jugadoresCreados.forEach((el)=> {
             const div = document.createElement('div')
             div.classList.add('card-container')
+            for(jugador of jugadoresCreados){
+                console.log(jugador)
+            }
             div.innerHTML += `
            
                 <div class="media-container">
@@ -314,7 +317,7 @@ captainsArr.forEach(el => {
                         <p class="name_value">REF</p>
                     </div>
                     <div class="def">
-                        <p class="value">${el.nombre}</p>
+                        <p class="value">${el.velocidad}</p>
                         <p class="name_value">DEF</p>
                     </div>
                 </div>

@@ -140,31 +140,30 @@ h4 {
 }
 .card-container .media-container {
   position: fixed;
-  background-color: black;
-  height: 10px;
   width: 120px;
   top: 195px;
   transform: translateX(103px);
   font-size: 50px;
   font-weight: bold;
+  text-align: center;
 }
 .card-container .media-container p {
   margin: 0px;
 }
 .card-container .sep_line1 {
   position: fixed;
-  background-color: black;
   height: 1px;
+  background-color: black;
   width: 151px;
   top: 260px;
   transform: translateX(87px);
 }
 .card-container .nation-container {
   position: fixed;
-  background-color: black;
   height: 74px;
   width: 128px;
   top: 277px;
+  overflow: hidden;
   transform: translateX(100px);
 }
 .card-container .nation-container img {
@@ -177,6 +176,7 @@ h4 {
   width: 260px;
   top: 150px;
   transform: translateX(257px);
+  overflow: hidden;
 }
 .card-container .playerPic-container img {
   width: 100%;
@@ -184,10 +184,8 @@ h4 {
 }
 .card-container .player-name {
   position: fixed;
-  background-color: black;
-  height: 1px;
   width: 151px;
-  top: 480px;
+  top: 460px;
   transform: translateX(147px);
 }
 .card-container .player-name p {
@@ -196,10 +194,8 @@ h4 {
 }
 .card-container .player-surname {
   position: fixed;
-  background-color: black;
-  height: 1px;
   width: 151px;
-  top: 480px;
+  top: 460px;
   transform: translateX(330px);
 }
 .card-container .player-surname p {
@@ -225,7 +221,7 @@ h4 {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 83px;
   width: 209px;
 }
@@ -233,7 +229,7 @@ h4 {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   top: 100px;
   height: 83px;
   width: 209px;
@@ -242,7 +238,7 @@ h4 {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 83px;
   width: 209px;
   transform: translateX(228px);
@@ -251,7 +247,7 @@ h4 {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   top: 100px;
   height: 83px;
   width: 209px;
