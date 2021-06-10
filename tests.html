@@ -151,7 +151,47 @@
 
 
 
+    <script>
+      /*function formData() {
+        form.addEventListener('submit', (event)=> {
+        event.preventDefault();
+        jugadoresCreados.push(new tuJugador(
+                form.querySelector('#nombre').value,
+                form.querySelector('#apellido').value,
+                form.querySelector('#media').value,
+                form.querySelector('#velocidad').value,
+                form.querySelector('#fuerza').value,
+                form.querySelector('#reflejos').value,
+                form.querySelector('#agilidad').value,
+                form.querySelector('#id').value
+            ))
+
+        //JSON LOCALSTORAGE SAVING and VERIFICATION
+        let verificacion = jugadoresCreados.some(x => x.id == id)
+        if(verificacion){
+            alert(`Uno de tus JUGADORES ya posee el ID por favor`)
+        }else{
+            const jugadoresJSON = JSON.stringify(jugadoresCreados)
+            localStorage.setItem('jugadores_base', jugadoresJSON)
+        }       
+
+      }) 
     
+    }*/
+
+    /*function recuperacion () { 
+        let playersJSON = JSON.parse(localStorage.getItem('jugadores_base'));
+        jugadoresCreados.push(playersJSON)      
+    }
+
+    function formDataexe () {
+        recuperacion()
+       jugadoresCreados.forEach(el=>formData(el.id))
+    }
+
+    formDataexe()*/
+
+    </script>
 
 
      <!-- Option 2: Separate Popper and Bootstrap JS --> 

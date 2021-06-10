@@ -198,6 +198,7 @@ captainsArr.forEach(el => {
 })
 
 
+
 //////////////////////////
 // CREADOR DE JUGADORES //
 /////////////////////////
@@ -218,10 +219,18 @@ captainsArr.forEach(el => {
         this.id = id
     }
     
-   function formData(id) {
+
+    function formData() {
         form.addEventListener('submit', (event)=> {
         event.preventDefault();
-        jugadoresCreados.push(new tuJugador(
+        let id = form.querySelector('#id').value
+        let verificacion = jugadoresCreados.some(x => x.id == id)
+        console.log(verificacion)
+        if(verificacion){
+            alert(`Uno de tus JUGADORES ya posee el ID por favor`)
+        }else{
+            if(jugadoresCreados.length <= 5){
+            jugadoresCreados.push(new tuJugador(
                 form.querySelector('#nombre').value,
                 form.querySelector('#apellido').value,
                 form.querySelector('#media').value,
@@ -231,87 +240,116 @@ captainsArr.forEach(el => {
                 form.querySelector('#agilidad').value,
                 form.querySelector('#id').value
             ))
-
-        //JSON LOCALSTORAGE SAVING and VERIFICATION
-        let verificacion = jugadoresCreados.some(x => x.id == id)
-        if(verificacion){
-            alert(`Uno de tus JUGADORES ya posee el ID por favor`)
-        }else{
+            //JSON LOCALSTORAGE SAVING and VERIFICATION
             const jugadoresJSON = JSON.stringify(jugadoresCreados)
             localStorage.setItem('jugadores_base', jugadoresJSON)
-        }       
-
-      }) 
-    
-    }
-
-     function recuperacion () { 
-        let playersJSON = JSON.parse(localStorage.getItem('jugadores_base'));
-   
-            jugadoresCreados.push(playersJSON)
-      
-    }
-
-    function formDataexe () {
-       recuperacion()
-       jugadoresCreados.forEach(el=>formData(el.id))
-    }
-
-    formDataexe()
-
-   /*
-   function recuperacion () { 
-        let recuperacion = JSON.parse(localStorage.getItem('jugadores_base'));
-        recuperacion.forEach(element => {
-            arrayJugadores.push(element)
-        });
-    }
-   
-   function formDataexe () {
-    let recorrido = jugadoresCreados.forEach((el) => el.id)
-    if(localStorage.jugadores_base){
-        let confirm = confirm('Hay JUGADORES CREADOS en la BASE, quieres recuperarlos?')
-        if(confirm == true){
-            recuperacion()
-            formData(recorrido)
-        }else{
-            formData(recorrido)
         }
-    }else{
-        formData(recorrido)
     }
-}*/
+      
+      }) 
+    }
+
+    formData()
+
+    function recuperacion () { 
+        let playersJSON = JSON.parse(localStorage.getItem('jugadores_base'));
+        if(playersJSON){
+            playersJSON.forEach(el=>{
+               jugadoresCreados.push(el) 
+            })
+        }
+    }
+    recuperacion()
 
 
 
 
-   
 
 
 
-  /*function startJSON() {
-       if(localStorage.jugadores_base){
-            const confirm = confirm('Hay DATOS en la BASE, deseas recuperarlos?')
-            switch(confirm){
-                case true:
-                    recuperacion()
-                    break
-                case false:
-                    break    
-            }
-       }else{
-
-       }
-   }*/
-
-   
-
-
-    
 
 
 
-    
+
+
+////////////////////////
+// USER CARD CREATOR //
+//////////////////////
+
+
+
+    const card_but = document.getElementById('card_button')
+
+    card_but.addEventListener('click', () => {
+        jugadoresCreados.forEach((el)=> {
+            const div = document.createElement('div')
+            div.classList.add('card-container')
+            div.innerHTML += `
+           
+                <div class="media-container">
+                    <p> ${el.media} </p>
+                </div>
+                <div class="sep_line1"></div>
+                <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
+                <div class="playerPic-container"><img src="imagenes/messiCard.png" alt=""></div>
+                <div class="player-name">
+                    <p>${el.nombre}</p>
+                </div>
+                <div class="player-surname">
+                    <p>${el.apellido}</p>
+                </div>
+                <div class="stats-line-separator"></div>
+                <div class="name-separator"></div>
+                <div class="stats">
+                    <div class="dri">
+                        <p class="value">${el.agilidad}</p>
+                        <p class="name_value">DRI</p>
+                    </div>
+                    <div class="phy">
+                        <p class="value">${el.fuerza}</p>
+                        <p class="name_value">PHY</p>
+                    </div>
+                    <div class="ref">
+                        <p class="value">${el.reflejos}</p>
+                        <p class="name_value">REF</p>
+                    </div>
+                    <div class="def">
+                        <p class="value">${el.nombre}</p>
+                        <p class="name_value">DEF</p>
+                    </div>
+                </div>
+                <img id="fifa_card" src="imagenes/goldCard.png" alt="">
+          
+            `
+            const userPlayersDiv = document.querySelector('.user-players-div')
+            userPlayersDiv.appendChild(div)
+                   
+        })
+
+
+
+
+    })
+
+    /*for (let jugador of jugadoresCreados) {
+        console.log(jugador)
+        jugador
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

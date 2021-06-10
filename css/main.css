@@ -1,0 +1,283 @@
+.formacion-container, .puntaje-container {
+  position: relative;
+  background-color: #0b087d;
+}
+.formacion-container ul li, .puntaje-container ul li {
+  color: white;
+  margin: 15px;
+  list-style: none;
+  border-bottom: 1px solid white;
+  font-size: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: "IBM Plex Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold !important;
+  background: black;
+  background: linear-gradient(0deg, black 51%, #0b087d 85%, #0c0681 100%);
+  padding: 15px;
+  color: white;
+  margin-bottom: 0px !important;
+}
+
+h3 {
+  color: white;
+}
+
+.capitanes-section {
+  background-image: url(../imagenes/capsBG.jpg);
+  background-position: 0 1100.209px;
+  border-bottom: 1px solid white;
+}
+.capitanes-section p {
+  color: white;
+}
+.capitanes-section .capitanes-container .img_caps-container {
+  width: 25%;
+  padding: 15px;
+  height: 580px;
+}
+.capitanes-section .capitanes-container .img_caps-container :hover {
+  transform: scale(1.123);
+  transition: all 0.7s;
+}
+.capitanes-section .capitanes-container .img_caps-container p {
+  padding: 30px;
+  background-color: black;
+}
+.capitanes-section .capitanes-container .img_caps-container img {
+  width: 100%;
+  height: 70%;
+  object-fit: contain;
+}
+.capitanes-section .capitanes-container .img_caps-container button {
+  margin-top: 5px;
+  background-color: transparent;
+  padding: 5px;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+.capitanes-section .capitanes-container .img_caps-container button :hover {
+  background-color: #0b087d;
+  transition: all 0.5s;
+}
+
+h2 {
+  color: white;
+  padding: 10px;
+  margin-bottom: 0px !important;
+  background-color: #0b087d;
+}
+
+.row {
+  background-image: url(../imagenes/soccerBG.jpg);
+  background-position: 0 1100.209px;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0px !important;
+}
+.row div {
+  padding: 0;
+}
+
+.puntaje-container {
+  border: 1px solid white;
+  height: 100%;
+}
+
+.formacion-container {
+  border: 1px solid white;
+  height: 100%;
+}
+
+.capitanElegido-div {
+  background-color: #0b087d;
+  border: 1px solid white;
+}
+.capitanElegido-div .currentCap h3 {
+  overflow: hidden;
+}
+.capitanElegido-div .currentCap p {
+  color: white;
+}
+
+.planillaFutbol-container {
+  text-align: center;
+  padding: 5px;
+}
+
+h4 {
+  color: white;
+  font-weight: bold !important;
+  overflow: hidden;
+}
+
+.jugador-container {
+  width: 100%;
+}
+.jugador-container img {
+  height: 350px;
+  width: 275px;
+  cursor: pointer;
+}
+
+/*.createPlayer-form {
+    background-color: #0b087d;;
+}*/
+.card-container {
+  display: inline-block;
+  transform: scale(0.5);
+  transition: all 0.5s;
+}
+.card-container .media-container {
+  position: fixed;
+  background-color: black;
+  height: 10px;
+  width: 120px;
+  top: 195px;
+  transform: translateX(103px);
+  font-size: 50px;
+  font-weight: bold;
+}
+.card-container .media-container p {
+  margin: 0px;
+}
+.card-container .sep_line1 {
+  position: fixed;
+  background-color: black;
+  height: 1px;
+  width: 151px;
+  top: 260px;
+  transform: translateX(87px);
+}
+.card-container .nation-container {
+  position: fixed;
+  background-color: black;
+  height: 74px;
+  width: 128px;
+  top: 277px;
+  transform: translateX(100px);
+}
+.card-container .nation-container img {
+  width: 100%;
+  object-fit: contain;
+}
+.card-container .playerPic-container {
+  position: fixed;
+  height: 300px;
+  width: 260px;
+  top: 150px;
+  transform: translateX(257px);
+}
+.card-container .playerPic-container img {
+  width: 100%;
+  object-fit: contain;
+}
+.card-container .player-name {
+  position: fixed;
+  background-color: black;
+  height: 1px;
+  width: 151px;
+  top: 480px;
+  transform: translateX(147px);
+}
+.card-container .player-name p {
+  font-size: 40px;
+  margin: 0px;
+}
+.card-container .player-surname {
+  position: fixed;
+  background-color: black;
+  height: 1px;
+  width: 151px;
+  top: 480px;
+  transform: translateX(330px);
+}
+.card-container .player-surname p {
+  font-size: 40px;
+  margin: 0px;
+}
+.card-container .name-separator {
+  position: fixed;
+  background-color: black;
+  height: 1px;
+  width: 367px;
+  top: 533px;
+  transform: translateX(132px);
+}
+.card-container .stats {
+  position: fixed;
+  height: 184px;
+  width: 437px;
+  top: 549px;
+  transform: translateX(104px);
+}
+.card-container .stats .dri {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 83px;
+  width: 209px;
+}
+.card-container .stats .phy {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 100px;
+  height: 83px;
+  width: 209px;
+}
+.card-container .stats .ref {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 83px;
+  width: 209px;
+  transform: translateX(228px);
+}
+.card-container .stats .def {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 100px;
+  height: 83px;
+  width: 209px;
+  transform: translateX(228px);
+}
+.card-container .stats-line-separator {
+  position: fixed;
+  background-color: black;
+  height: 237px;
+  width: 1px;
+  top: 535px;
+  transform: translateX(321px);
+}
+.card-container .value {
+  font-size: 30px;
+}
+.card-container .name_value {
+  font-size: 30px;
+}
+.card-container #fifa_card {
+  width: 400;
+  height: 600;
+}
+
+.card-container:hover {
+  transform: scale(0.8);
+}
+
+/*# sourceMappingURL=main.css.map */
