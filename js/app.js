@@ -325,7 +325,7 @@ captainsArr.forEach(el => {
 
     /*for (let i = 0; i <= 1; i++) {
         console.log(i)
-        if(i == 1){ 
+        if(i >= 2){ 
             alert('Ya recuperaste tus jugadores.')
         }else{      
             card_but.addEventListener('click', () => {    
@@ -381,7 +381,53 @@ captainsArr.forEach(el => {
     //createCard()
 
 
-
+    for (let i=0; i<=1; i++){
+         card_but.addEventListener('click', () => {    
+            jugadoresCreados.forEach((el)=> {   
+            const div = document.createElement('div')
+            div.classList.add('card-container')
+            div.innerHTML += `       
+                <div class="media-container">
+                    <p> ${el.media} </p>
+                </div>
+                <div class="sep_line1"></div>
+                <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
+                <div class="playerPic-container"><img src="imagenes/messiCard.png" alt=""></div>
+                <div class="player-name">
+                    <p>${el.nombre}</p>
+                </div>
+                <div class="player-surname">
+                    <p>${el.apellido}</p>
+                </div>
+                <div class="stats-line-separator"></div>
+                <div class="name-separator"></div>
+                <div class="stats">
+                    <div class="dri">
+                        <p class="value">${el.agilidad}</p>
+                        <p class="name_value">DRI</p>
+                    </div>
+                    <div class="phy">
+                        <p class="value">${el.fuerza}</p>
+                        <p class="name_value">PHY</p>
+                    </div>
+                    <div class="ref">
+                        <p class="value">${el.reflejos}</p>
+                        <p class="name_value">REF</p>
+                    </div>
+                    <div class="def">
+                        <p class="value">${el.velocidad}</p>
+                        <p class="name_value">DEF</p>
+                    </div>
+                </div>
+                <img id="fifa_card" src="imagenes/goldCard.png" alt="">
+          
+            `
+            const userPlayersDiv = document.querySelector('.user-players-div')
+            userPlayersDiv.appendChild(div)
+        })
+        
+    })
+    }
 
 
 //////////////////////////////////////////////////////
