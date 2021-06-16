@@ -1,58 +1,4 @@
 
-// Inicio del programa, recuperacion/indagacion de datos. Creacion de JUGADORES.
-
-/*let cantidad = 2;
-
-function plantelInicial (nombre, apellido, posicion, piernaHabil) {
-    this.nombre=nombre;
-    this.apellido=apellido;
-    this.posicion=posicion;
-    this.piernaHabil=piernaHabil
-}
-
-const arrayJugadores = [];
-
-function datosJugador() {
-    do {
-        alert("Bienvenido a FUTSimulator! Crea a 5 de tus 11 jugadores.")
-        arrayJugadores.push(new plantelInicial(
-            prompt("Nombre del jugador"),
-            prompt("Apellido del jugador"),
-            prompt("Posicion del jugador"),
-            prompt("Pierna habil del jugador. (D, I, Ambidiestro)"), 
-            )
-    )}while(arrayJugadores.length!=cantidad)
-
-    let jugadorJSON = JSON.stringify(arrayJugadores);
-    localStorage.setItem('datos', jugadorJSON) 
-}
-
-function recuperar() {
-    let recuperacion = JSON.parse(localStorage.getItem('datos'));
-    recuperacion.forEach(element => {
-        arrayJugadores.push(element)
-    });
-}
-
-
-function inicio() {
-    if (localStorage.datos) {
-        let aviso = confirm("Hay datos en la base, desea recuperarlos?");
-        if (aviso==true) {
-            recuperar()
-        }else {
-            datosJugador()
-        }
-        
-    }else {
-        datosJugador()
-    }
-}
-
-inicio()*/
-
-
-     
 ///////////////////////////////////////////////////
 // CREACION DINAMICA DE CAPITANES MEDIANTE ARRAY //
 //////////////////////////////////////////////////
@@ -104,7 +50,6 @@ capitanSeleccionado(captainsArray)
     const capitanElegidoDiv = document.querySelector('#capitanSeleccionado')
 
     function seleccionCapitan (id) {
-        //const validar = capitanElegido.some(x => x.id == id)
         const validar = capitanElegido.some(x => x)
         if(validar){
             alert('ATENCION! Ya tienes un capitan elegido, para modificarlo borra el que ya tienes!')
@@ -198,10 +143,12 @@ captainsArr.forEach(el => {
 })
 
 
-
+///////////////////////////
+// USER CARD CREATOR ////////AND
+/////////////////////////// 
 //////////////////////////
 // CREADOR DE JUGADORES //
-/////////////////////////
+/////////////////////////         
 
     //CREANDO EL FORMULARIO
     //const creadorCollapse = document.querySelector('#playerCreator-collapse') 
@@ -225,7 +172,6 @@ captainsArr.forEach(el => {
         event.preventDefault();
         let id = form.querySelector('#id').value
         let verificacion = jugadoresCreados.some(x => x.id == id)
-        console.log(verificacion)
         if(verificacion){
             alert(`Uno de tus JUGADORES ya posee el ID por favor`)
         }else{
@@ -240,9 +186,60 @@ captainsArr.forEach(el => {
                 form.querySelector('#agilidad').value,
                 form.querySelector('#id').value
             ))
+
             //JSON LOCALSTORAGE SAVING and VERIFICATION
             const jugadoresJSON = JSON.stringify(jugadoresCreados)
             localStorage.setItem('jugadores_base', jugadoresJSON)
+
+
+            //USER CARD CREATOR
+            jugadoresCreados.map(el=> {
+                if(el.id == id){
+                    const div = document.createElement('div')
+                    div.classList.add('card-container')
+                    div.innerHTML += `
+               
+                    <div class="media-container">
+                        <p> ${el.media} </p>
+                    </div>
+                    <div class="sep_line1"></div>
+                    <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
+                    <div class="playerPic-container"><img src="imagenes/messiCard.png" alt=""></div>
+                    <div class="player-name">
+                        <p>${el.nombre}</p>
+                    </div>
+                    <div class="player-surname">
+                        <p>${el.apellido}</p>
+                    </div>
+                    <div class="stats-line-separator"></div>
+                    <div class="name-separator"></div>
+                    <div class="stats">
+                        <div class="dri">
+                            <p class="value">${el.agilidad}</p>
+                            <p class="name_value">DRI</p>
+                        </div>
+                        <div class="phy">
+                            <p class="value">${el.fuerza}</p>
+                            <p class="name_value">PHY</p>
+                        </div>
+                        <div class="ref">
+                            <p class="value">${el.reflejos}</p>
+                            <p class="name_value">REF</p>
+                        </div>
+                        <div class="def">
+                            <p class="value">${el.velocidad}</p>
+                            <p class="name_value">DEF</p>
+                        </div>
+                    </div>
+                    <img id="fifa_card" src="imagenes/goldCard.png" alt="">
+              
+                `
+                const userPlayersDiv = document.querySelector('.user-players-div')
+                userPlayersDiv.appendChild(div)
+                }else{
+                   
+                }
+            })
         }
     }
       
@@ -251,6 +248,8 @@ captainsArr.forEach(el => {
 
     formData()
 
+
+    //L.S RECUPERACION USER PLAYERS
     function recuperacion () { 
         let playersJSON = JSON.parse(localStorage.getItem('jugadores_base'));
         if(playersJSON){
@@ -265,28 +264,17 @@ captainsArr.forEach(el => {
 
 
 
-
-
-
-
-
-
-
-////////////////////////
-// USER CARD CREATOR //
-//////////////////////
-
-
-
+    ////////////////////////////////
+    // RECUPERACION DE USER CARDS //
+    ///////////////////////////////
     const card_but = document.getElementById('card_button')
 
+   /* function createCard () {
     card_but.addEventListener('click', () => {
-        jugadoresCreados.forEach((el)=> {
+        for (let i = 0; i <= 0; i++) {     
+            jugadoresCreados.forEach((el)=> {   
             const div = document.createElement('div')
             div.classList.add('card-container')
-            for(jugador of jugadoresCreados){
-                console.log(jugador)
-            }
             div.innerHTML += `
            
                 <div class="media-container">
@@ -326,31 +314,71 @@ captainsArr.forEach(el => {
             `
             const userPlayersDiv = document.querySelector('.user-players-div')
             userPlayersDiv.appendChild(div)
-                   
         })
-
-
-
-
+        }
+        
     })
 
-    /*for (let jugador of jugadoresCreados) {
-        console.log(jugador)
-        jugador
+    }*/
+     
+
+
+    /*for (let i = 0; i <= 1; i++) {
+        console.log(i)
+        if(i == 1){ 
+            alert('Ya recuperaste tus jugadores.')
+        }else{      
+            card_but.addEventListener('click', () => {    
+                console.log(i) 
+                jugadoresCreados.forEach((el)=> {   
+                const div = document.createElement('div')
+                div.classList.add('card-container')
+                div.innerHTML += `       
+                    <div class="media-container">
+                        <p> ${el.media} </p>
+                    </div>
+                    <div class="sep_line1"></div>
+                    <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
+                    <div class="playerPic-container"><img src="imagenes/messiCard.png" alt=""></div>
+                    <div class="player-name">
+                        <p>${el.nombre}</p>
+                    </div>
+                    <div class="player-surname">
+                        <p>${el.apellido}</p>
+                    </div>
+                    <div class="stats-line-separator"></div>
+                    <div class="name-separator"></div>
+                    <div class="stats">
+                        <div class="dri">
+                            <p class="value">${el.agilidad}</p>
+                            <p class="name_value">DRI</p>
+                        </div>
+                        <div class="phy">
+                            <p class="value">${el.fuerza}</p>
+                            <p class="name_value">PHY</p>
+                        </div>
+                        <div class="ref">
+                            <p class="value">${el.reflejos}</p>
+                            <p class="name_value">REF</p>
+                        </div>
+                        <div class="def">
+                            <p class="value">${el.velocidad}</p>
+                            <p class="name_value">DEF</p>
+                        </div>
+                    </div>
+                    <img id="fifa_card" src="imagenes/goldCard.png" alt="">
+              
+                `
+                const userPlayersDiv = document.querySelector('.user-players-div')
+                userPlayersDiv.appendChild(div)
+            })
+            
+        }) 
+        }
+        
     }*/
 
-
-
-
-
-
-
-
-
-
-
-
-
+    //createCard()
 
 
 
@@ -388,25 +416,6 @@ captainsArr.forEach(el => {
         `
         fieldFirstPosition.appendChild(fieldPosition)  
 })
-
-
-
-
-            /*
-            crear.addEventListener('click',function(){
-            i++
-            arrayContador.push(i)
-            console.log(arrayContador.length)
-            do{
-                let fieldPosition = document.createElement('div')
-                fieldPosition.setAttribute('class', 'recreatedField')
-                fieldPosition.innerHTML += `
-                <img src="imagenes/planillaFutbol.jpg" id="field" class="img-fluid" alt="">
-                `
-                fieldFirstPosition.appendChild(fieldPosition)  
-            }while(arrayContador.length<=1)
-            }
-            */
 
 
 
