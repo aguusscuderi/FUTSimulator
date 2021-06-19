@@ -143,9 +143,9 @@ captainsArr.forEach(el => {
 })
 
 
-///////////////////////////
-// USER CARD CREATOR ////////AND
-/////////////////////////// 
+//////////////////////////////////
+// USER CARD CREATOR ////////AND//
+/////////////////////////////////
 //////////////////////////
 // CREADOR DE JUGADORES //
 /////////////////////////         
@@ -153,9 +153,10 @@ captainsArr.forEach(el => {
     //CREANDO EL FORMULARIO
     //const creadorCollapse = document.querySelector('#playerCreator-collapse') 
     const jugadoresCreados = []
+    const createdCards = []
     const form = document.getElementById('playerCreator-form')
 
-    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad, id) {
+    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad, id, position) {
         this.nombre=nombre,
         this.apellido=apellido,
         this.media=media,
@@ -163,7 +164,8 @@ captainsArr.forEach(el => {
         this.fuerza=fuerza,
         this.reflejos=reflejos,
         this.agilidad=agilidad,
-        this.id = id
+        this.id = id,
+        this.position = position
     }
     
 
@@ -184,27 +186,33 @@ captainsArr.forEach(el => {
                 form.querySelector('#fuerza').value,
                 form.querySelector('#reflejos').value,
                 form.querySelector('#agilidad').value,
-                form.querySelector('#id').value
+                form.querySelector('#id').value,
+                form.querySelector('#position').value
+
             ))
 
             //JSON LOCALSTORAGE SAVING and VERIFICATION
             const jugadoresJSON = JSON.stringify(jugadoresCreados)
             localStorage.setItem('jugadores_base', jugadoresJSON)
 
-
+            //console.log(jugadoresCreados)
+            
             //USER CARD CREATOR
             jugadoresCreados.map(el=> {
                 if(el.id == id){
                     const div = document.createElement('div')
                     div.classList.add('card-container')
+                    div.classList.add(`${el.position}`)
+                    div.setAttribute('id', `${el.id}`)
                     div.innerHTML += `
-               
+
+            
                     <div class="media-container">
                         <p> ${el.media} </p>
                     </div>
                     <div class="sep_line1"></div>
                     <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
-                    <div class="playerPic-container"><img src="imagenes/messiCard.png" alt=""></div>
+                    <div class="playerPic-container"><img class="img_card" src="imagenes/messiCard.png" alt=""></div>
                     <div class="player-name">
                         <p>${el.nombre}</p>
                     </div>
@@ -232,10 +240,14 @@ captainsArr.forEach(el => {
                         </div>
                     </div>
                     <img id="fifa_card" src="imagenes/goldCard.png" alt="">
+               
               
                 `
                 const userPlayersDiv = document.querySelector('.user-players-div')
                 userPlayersDiv.appendChild(div)
+                createdCards.push(div)
+                //Ejecuto esta funcion para que el jugador sea tomado por el documento, ya que al cargar el mismo, no se encuentra creado el elemento
+                addPlayer()
                 }else{
                    
                 }
@@ -260,14 +272,16 @@ captainsArr.forEach(el => {
                jugadoresCreados.push(el) 
                const div = document.createElement('div')
                div.classList.add('card-container')
+               div.classList.add(`${el.position}`)
+               div.setAttribute('id', `${el.id}`)
                div.innerHTML += `
-          
+        
                <div class="media-container">
                    <p> ${el.media} </p>
                </div>
                <div class="sep_line1"></div>
                <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
-               <div class="playerPic-container"><img src="imagenes/messiCard.png" alt=""></div>
+               <div class="playerPic-container"><img class="img_card" src="imagenes/messiCard.png" alt=""></div>
                <div class="player-name">
                    <p>${el.nombre}</p>
                </div>
@@ -295,10 +309,11 @@ captainsArr.forEach(el => {
                    </div>
                </div>
                <img id="fifa_card" src="imagenes/goldCard.png" alt="">
-         
+        
            `
            const userPlayersDiv = document.querySelector('.user-players-div')
            userPlayersDiv.appendChild(div)
+           createdCards.push(div)
            })
        }
    }
@@ -313,43 +328,137 @@ captainsArr.forEach(el => {
     //////////////////////////////////////
 
 
- //const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS.)   
+//const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS.)   
 
 const jugadorStandard = document.querySelectorAll('.jugador-standard')
 const containerPlayer = document.querySelectorAll('.player__item')
 
-//AGREGANDO LOS JUGADORES STANDARD
+const userPlayerDiv = document.querySelector('.user-players-div')
+const userPlayerCard = userPlayerDiv.children
+
 function addPlayer (){
-    jugadorStandard.forEach(el => {
-    el.addEventListener('click', () => {
-        let jugadorStandardSRC = el.currentSrc
-        const div = document.createElement('div')
-        div.innerHTML += `
-            <img class="img_chsnPlayer" src="${jugadorStandardSRC}"/>
-        `
-        for (let pos of containerPlayer){
-            if(pos.children.length == 0){
-                if(el.classList[0] == 'delantero' && (pos.id == 11 || pos.id == 10 || pos.id == 9)){
-                    pos.appendChild(div)
-                }else if (el.classList[0] == 'midfielder' && (pos.id == 8 || pos.id == 7 || pos.id == 5)){
-                    pos.appendChild(div)
-                }else if(el.classList[0] == 'defensor' && (pos.id == 6 || pos.id == 4 || pos.id == 3 || pos.id == 2)){
-                    pos.appendChild(div)
-                }else if(el.classList[0] == 'goalkeeper' && pos.id == 1){
-                    pos.appendChild(div)
+    //AGREGANDO LOS JUGADORES STANDARD
+        jugadorStandard.forEach(el => {
+        el.addEventListener('click', () => {
+            let jugadorStandardSRC = el.currentSrc
+            const div = document.createElement('div')
+            div.innerHTML += `
+                <img class="img_chsnPlayer" src="${jugadorStandardSRC}"/>
+            `
+            for (let pos of containerPlayer){
+                if(pos.children.length == 0){
+                    if(el.classList[0] == 'delantero' && (pos.id == 11 || pos.id == 10 || pos.id == 9)){
+                        pos.appendChild(div)
+                    }else if (el.classList[0] == 'midfielder' && (pos.id == 8 || pos.id == 7 || pos.id == 5)){
+                        pos.appendChild(div)
+                    }else if(el.classList[0] == 'defensor' && (pos.id == 6 || pos.id == 4 || pos.id == 3 || pos.id == 2)){
+                        pos.appendChild(div)
+                    }else if(el.classList[0] == 'goalkeeper' && pos.id == 1){
+                        pos.appendChild(div)
+                    }
                 }
+            
             }
-          
-        }
-    })   
-})
+        }) 
+
+    })
+
+    //AGREGANDO JUGADORES CREADOS POR EL USUARIO
+    
+    createdCards.forEach(card => {
+        card.addEventListener('click', ()=>{
+
+            jugadoresCreados.map(el=> {
+                if(el.id == card.id){
+                    const div = document.createElement('div')
+                    div.classList.add('card-container-canchita')
+                    div.classList.add(`${el.position}`)
+                 
+                    div.innerHTML += `
+
+            
+                    <div class="media-container">
+                        <p> ${el.media} </p>
+                    </div>
+                    <div class="sep_line1"></div>
+                    <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
+                    <div class="playerPic-container"><img class="player-img-canchita" src="imagenes/messiCard.png" alt=""></div>
+                    <div class="player-name">
+                        <p>${el.nombre}</p>
+                    </div>
+                    <div class="player-surname">
+                        <p>${el.apellido}</p>
+                    </div>
+                    <div class="stats-line-separator"></div>
+                    <div class="name-separator"></div>
+                    <div class="stats">
+                        <div class="dri">
+                            <p class="value">${el.agilidad}</p>
+                            <p class="name_value">DRI</p>
+                        </div>
+                        <div class="phy">
+                            <p class="value">${el.fuerza}</p>
+                            <p class="name_value">PHY</p>
+                        </div>
+                        <div class="ref">
+                            <p class="value">${el.reflejos}</p>
+                            <p class="name_value">REF</p>
+                        </div>
+                        <div class="def">
+                            <p class="value">${el.velocidad}</p>
+                            <p class="name_value">DEF</p>
+                        </div>
+                    </div>
+                    <img id="fifa_card" src="imagenes/goldCard.png" alt="">
+               
+              
+                `
+                  for (let pos of containerPlayer){
+                    if(pos.children.length == 0){
+                            if(card.classList[1] == 'del' && (pos.id == 11 || pos.id == 10 || pos.id == 9)){
+                            pos.appendChild(div)
+                        }else if (card.classList[1] == 'med' && (pos.id == 8 || pos.id == 7 || pos.id == 5)){
+                            pos.appendChild(div)
+                        }else if(card.classList[1] == 'def' && (pos.id == 6 || pos.id == 4 || pos.id == 3 || pos.id == 2)){
+                            pos.appendChild(div)
+                        }else if(card.classList[1] == 'arq' && pos.id == 1){
+                            pos.appendChild(div)
+                        }
+                    }
+                
+                    }
+
+                }else{
+                  
+                }
+            })
+        })
+    })
 
 }
 
 addPlayer()
 
+
  /* const random = Math.floor(Math.random() * containerPlayer.length);
         let randomPosition = containerPlayer[random]*/
+
+
+
+
+    /////////////////////////////////////////////
+    // DESPLAZAMIENTO DE JUGADORES CON JQUERY //
+    ///////////////////////////////////////////
+
+    $(document).ready(function(){
+        $(".player__item").draggable({
+         containment:".field__box",
+         cursor: "grabbing"
+        })
+      });
+
+    
+
 
 
 

@@ -200,10 +200,15 @@ h4 {
         transform: translateX(257px);
         overflow: hidden;
 
-        img{
+        /*img{
             width: 100%;
             object-fit: contain;
-        }
+        }*/
+    }
+
+    .img_card {
+        width: 100%;
+            object-fit: contain;
     }
 
     .player-name {
@@ -313,6 +318,182 @@ h4 {
 .card-container:hover {
     transform: scale(0.8);
 }
+
+// PLAYER CARD SOBRE LA CANCHITA DE FUTBOL 
+
+.card-container-canchita {
+    display: inline-block;
+    transform: scale(1);
+    transition: all 0.5s;
+    overflow: hidden;
+    .media-container {
+        position: fixed;
+        width: 120px;
+        top: 37px;
+        transform: translateX(-20px);
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        p{
+            margin: 0px
+        }
+    }
+
+    .sep_line1 {
+        position: fixed;
+        height: 1px;
+        background-color: black;
+        width: 37px;
+        top: 64px;
+        transform: translateX(21px);
+    }
+
+    .nation-container {
+        position: fixed;
+        height: 43px;
+        width: 33px;
+        top: 66px;
+        overflow: hidden;
+        transform: translateX(23px);
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .playerPic-container {
+        position: fixed;
+        height: 148px;
+        width: 77px;
+        top: 25px;
+        transform: translateX(46px);
+        overflow: hidden;
+
+        /*img{
+            width: 100%;
+            object-fit: contain;
+        }*/
+    }
+
+    .img_card {
+        width: 100%;
+            object-fit: contain;
+    }
+
+    .player-name {
+        position: fixed;
+        width: 151px;
+        top: 460px;
+        transform: translateX(147px);
+        p{
+            font-size: 40px;
+            margin: 0px;
+        }
+    }
+
+    .player-surname {
+        position: fixed;
+        width: 151px;
+        top: 460px;
+        transform: translateX(330px);
+        p{
+           font-size: 40px; 
+           margin: 0px;
+        }
+    }
+
+    .name-separator{
+        position: fixed;
+        background-color: black;
+        height: 1px;
+        width: 367px;
+        top: 533px;
+        transform: translateX(132px);
+    }
+
+    .stats {
+        position: fixed;
+        //background-color: black;
+        height: 184px;
+        width: 437px;
+        top: 549px;
+        transform: translateX(104px);
+        .dri{
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            height: 83px;
+            width: 209px;
+        }
+
+        .phy{
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            top: 100px;
+            height: 83px;
+            width: 209px;
+        }
+        
+
+        .ref{
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            height: 83px;
+            width: 209px;
+            transform: translateX(228px);
+        }
+
+        .def{
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            top: 100px;
+            height: 83px;
+            width: 209px;
+            transform: translateX(228px)
+
+        }
+    }
+
+    .stats-line-separator {
+        position: fixed;
+        background-color: black;
+        height: 237px;
+        width: 1px;
+        top: 535px;
+        transform: translateX(321px);
+    }
+
+    .value {
+        font-size: 30px;
+    }
+
+    .name_value {
+        font-size: 30px;
+    }
+
+    #fifa_card {
+        width: 400 ;
+        height: 600;
+    }
+    
+
+
+
+}
+
+
+
+
+
+
+
 
 /////////////////////////
 /// CANCHA DE FUTBOL ///

@@ -177,8 +177,12 @@ h4 {
   top: 150px;
   transform: translateX(257px);
   overflow: hidden;
+  /*img{
+      width: 100%;
+      object-fit: contain;
+  }*/
 }
-.card-container .playerPic-container img {
+.card-container .img_card {
   width: 100%;
   object-fit: contain;
 }
@@ -274,6 +278,150 @@ h4 {
 
 .card-container:hover {
   transform: scale(0.8);
+}
+
+.card-container-canchita {
+  display: inline-block;
+  transform: scale(1);
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.card-container-canchita .media-container {
+  position: fixed;
+  width: 120px;
+  top: 37px;
+  transform: translateX(-20px);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.card-container-canchita .media-container p {
+  margin: 0px;
+}
+.card-container-canchita .sep_line1 {
+  position: fixed;
+  height: 1px;
+  background-color: black;
+  width: 37px;
+  top: 64px;
+  transform: translateX(21px);
+}
+.card-container-canchita .nation-container {
+  position: fixed;
+  height: 43px;
+  width: 33px;
+  top: 66px;
+  overflow: hidden;
+  transform: translateX(23px);
+}
+.card-container-canchita .nation-container img {
+  width: 100%;
+  object-fit: contain;
+}
+.card-container-canchita .playerPic-container {
+  position: fixed;
+  height: 148px;
+  width: 77px;
+  top: 25px;
+  transform: translateX(46px);
+  overflow: hidden;
+  /*img{
+      width: 100%;
+      object-fit: contain;
+  }*/
+}
+.card-container-canchita .img_card {
+  width: 100%;
+  object-fit: contain;
+}
+.card-container-canchita .player-name {
+  position: fixed;
+  width: 151px;
+  top: 460px;
+  transform: translateX(147px);
+}
+.card-container-canchita .player-name p {
+  font-size: 40px;
+  margin: 0px;
+}
+.card-container-canchita .player-surname {
+  position: fixed;
+  width: 151px;
+  top: 460px;
+  transform: translateX(330px);
+}
+.card-container-canchita .player-surname p {
+  font-size: 40px;
+  margin: 0px;
+}
+.card-container-canchita .name-separator {
+  position: fixed;
+  background-color: black;
+  height: 1px;
+  width: 367px;
+  top: 533px;
+  transform: translateX(132px);
+}
+.card-container-canchita .stats {
+  position: fixed;
+  height: 184px;
+  width: 437px;
+  top: 549px;
+  transform: translateX(104px);
+}
+.card-container-canchita .stats .dri {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 83px;
+  width: 209px;
+}
+.card-container-canchita .stats .phy {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  top: 100px;
+  height: 83px;
+  width: 209px;
+}
+.card-container-canchita .stats .ref {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 83px;
+  width: 209px;
+  transform: translateX(228px);
+}
+.card-container-canchita .stats .def {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  top: 100px;
+  height: 83px;
+  width: 209px;
+  transform: translateX(228px);
+}
+.card-container-canchita .stats-line-separator {
+  position: fixed;
+  background-color: black;
+  height: 237px;
+  width: 1px;
+  top: 535px;
+  transform: translateX(321px);
+}
+.card-container-canchita .value {
+  font-size: 30px;
+}
+.card-container-canchita .name_value {
+  font-size: 30px;
+}
+.card-container-canchita #fifa_card {
+  width: 400;
+  height: 600;
 }
 
 body {
