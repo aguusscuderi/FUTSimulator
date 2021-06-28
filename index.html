@@ -24,20 +24,11 @@
     <h1> FUTSIMULATOR </h1>
     <section class="capitanes-section text-center">
         <h3> Selecciona TU CAPITAN</h3>
-        <p>Nota: Cada CAPITAN otorga distintos beneficios en tus jugadores.</p>
+        <p>Nota: Cada CAPITAN otorga distintos beneficios en tus a tu EQUIPO.</p>
+        <p>Nota: Podras elegir tu CAPITAN una vez completes tu PLANILLA de EQUIPO</p>
         <div class="capitanes-container d-flex flex-wrap flex-row align-content-center">
-           <!-- <div class="img_caps-container" id="messi-div">
-                <img src="imagenes/messiCap.png" id="messi" class="img-fluid captain " alt="">
-            </div>
-            <div class="img_caps-container" id="ronaldo-div">
-                <img src="imagenes/ronaldoCap.png" id="ronaldo" class="img-fluid captain ronaldo" alt="">
-            </div>
-            <div class="img_caps-container" id="vandijk-div">
-                <img src="imagenes/kanteCap.png" id="vandijk" class="img-fluid captain kante" alt="">
-            </div>
-            <div class="img_caps-container" id="alisson-div">
-                <img src="imagenes/alissonCap.png" id="alisson" class="img-fluid captain alisson" alt="">
-            </div>-->
+          
+
         </div>
     </section>
 
@@ -130,15 +121,15 @@
                                     <div class="col-sm-12 col-md-4 col-lg-4 text-center">
                                         <div class="puntaje-container">
                                             <ul>
-                                                <li>PUNTOS DISPONIBLES: 100</li>
-                                                <li>ATAQUE: </li>
-                                                <li>DEFENSA: </li>
+                                                <li id="attack">ATAQUE: </li>
+                                                <li id="defense">DEFENSA: </li>
                                             </ul>
                                             <ul>
-                                                <li>Velocidad:</li>
-                                                <li>Fuerza:</li>
-                                                <li>Reflejos:</li>
-                                                <li>Agilidad:  </li>
+                                                <p>Aqui se muestran los promedios en los Stats de tus JUGADORES CREADOS</p>
+                                                <li>Velocidad: <b id="vel"></b></li>
+                                                <li>Fuerza: <b id="fue"></b></li>
+                                                <li>Reflejos: <b id="ref"></b></li>
+                                                <li>Agilidad:  <b id="agi"></b></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -173,7 +164,7 @@
                         <div class="card-body" id="playerCreator-collapse">
                             <form action="#" id="playerCreator-form" method="POST" class="createPlayer-form text-center">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <div class="col-sm-12 col-md-6 col-lg-6 user-sec">
                                         <div>
                                             <label for="nombre">NOMBRE</label>
                                             <input type="text" name="nombre " id="nombre">
@@ -187,7 +178,7 @@
                                             <input type="number" id="media">
                                         </div> 
                                     </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                    <div class="col-sm-12 col-md-6 col-lg-6 user-sec">
                                         <div>
                                             <b>STATS</b>
                                             <div>
@@ -224,11 +215,15 @@
                                     </div>
                                 </div>
 
-                                <button type="submit">Enviar</button>
+                                <button type="submit">CREAR</button>
                             </form>
-                            <button id="card_button">RECUPERAR JUGADORES</button>
                         </div> 
                     </div>
+                </div>
+
+             
+                <div class="user-players-div d-flex flex-wrap flex-row">
+
                 </div>
             </div>
         </div>
@@ -287,16 +282,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-        <div class="user-players-div">
-
-        </div>
     </div>
 
     <!-- JS -->

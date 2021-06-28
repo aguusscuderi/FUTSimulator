@@ -133,9 +133,30 @@ h4 {
 /*.createPlayer-form {
     background-color: #0b087d;;
 }*/
+.user-sec {
+  background-image: url(../imagenes/user-sec.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.user-sec b {
+  color: black;
+}
+.user-sec label {
+  color: black;
+  margin: 10px;
+  padding: 5px;
+}
+.user-sec input {
+  background: linear-gradient(0deg, #3e3b83 8%, rgba(218, 218, 231, 0.681109944) 61%);
+  border: none;
+  border-bottom: 1px solid black;
+  color: black;
+  font-weight: bold;
+}
+
 .card-container {
   display: inline-block;
-  transform: scale(0.5);
+  transform: scale(0.37);
   transition: all 0.5s;
 }
 .card-container .media-container {
@@ -189,22 +210,24 @@ h4 {
 .card-container .player-name {
   position: fixed;
   width: 151px;
-  top: 460px;
+  top: 470px;
   transform: translateX(147px);
 }
 .card-container .player-name p {
-  font-size: 40px;
+  font-size: 45px;
   margin: 0px;
+  font-weight: bold;
 }
 .card-container .player-surname {
   position: fixed;
   width: 151px;
-  top: 460px;
+  top: 470px;
   transform: translateX(330px);
 }
 .card-container .player-surname p {
-  font-size: 40px;
+  font-size: 45px;
   margin: 0px;
+  font-weight: bold;
 }
 .card-container .name-separator {
   position: fixed;
@@ -266,10 +289,11 @@ h4 {
   transform: translateX(321px);
 }
 .card-container .value {
-  font-size: 30px;
+  font-size: 35px;
+  font-weight: bold;
 }
 .card-container .name_value {
-  font-size: 30px;
+  font-size: 35px;
 }
 .card-container #fifa_card {
   width: 400;
@@ -277,7 +301,7 @@ h4 {
 }
 
 .card-container:hover {
-  transform: scale(0.8);
+  transform: scale(0.5);
 }
 
 .card-container-canchita {
@@ -297,6 +321,7 @@ h4 {
 }
 .card-container-canchita .media-container p {
   margin: 0px;
+  font-weight: bold;
 }
 .card-container-canchita .sep_line1 {
   position: fixed;
@@ -336,82 +361,98 @@ h4 {
 }
 .card-container-canchita .player-name {
   position: fixed;
-  width: 151px;
-  top: 460px;
-  transform: translateX(147px);
+  top: 108px;
+  transform: translateX(33px);
 }
 .card-container-canchita .player-name p {
-  font-size: 40px;
+  font-size: 15px;
+  font-weight: bold;
   margin: 0px;
 }
 .card-container-canchita .player-surname {
   position: fixed;
-  width: 151px;
-  top: 460px;
-  transform: translateX(330px);
+  top: 108px;
+  font-weight: bold;
+  transform: translateX(81px);
 }
 .card-container-canchita .player-surname p {
-  font-size: 40px;
+  font-size: 15px;
   margin: 0px;
 }
 .card-container-canchita .name-separator {
   position: fixed;
   background-color: black;
   height: 1px;
-  width: 367px;
-  top: 533px;
-  transform: translateX(132px);
+  width: 82px;
+  top: 131px;
+  transform: translateX(35px);
 }
 .card-container-canchita .stats {
   position: fixed;
-  height: 184px;
-  width: 437px;
-  top: 549px;
-  transform: translateX(104px);
+  height: 62px;
+  width: 101px;
+  top: 131px;
+  transform: translateX(26px);
+  overflow: hidden;
 }
 .card-container-canchita .stats .dri {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  height: 83px;
-  width: 209px;
+  height: 62px;
+  width: 104px;
+}
+.card-container-canchita .stats .dri p {
+  margin: 2px;
+  font-size: 13px;
 }
 .card-container-canchita .stats .phy {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  top: 100px;
-  height: 83px;
-  width: 209px;
+  height: 62px;
+  width: 104px;
+  top: 21px;
+}
+.card-container-canchita .stats .phy p {
+  margin: 2px;
+  font-size: 13px;
 }
 .card-container-canchita .stats .ref {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  height: 83px;
-  width: 209px;
-  transform: translateX(228px);
+  height: 62px;
+  width: 104px;
+  left: 51px;
+}
+.card-container-canchita .stats .ref p {
+  margin: 2px;
+  font-size: 13px;
 }
 .card-container-canchita .stats .def {
   position: fixed;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  top: 100px;
-  height: 83px;
-  width: 209px;
-  transform: translateX(228px);
+  height: 62px;
+  width: 104px;
+  top: 21px;
+  left: 51px;
+}
+.card-container-canchita .stats .def p {
+  margin: 2px;
+  font-size: 13px;
+}
+.card-container-canchita .stats .value {
+  font-weight: bold;
 }
 .card-container-canchita .stats-line-separator {
   position: fixed;
   background-color: black;
-  height: 237px;
+  height: 51px;
   width: 1px;
-  top: 535px;
-  transform: translateX(321px);
+  top: 132px;
+  transform: translateX(75px);
 }
 .card-container-canchita .value {
   font-size: 30px;
@@ -433,8 +474,8 @@ body {
   left: 2vw;
   width: 48vw;
   height: 123vh;
-  background: url(https://4.bp.blogspot.com/-JiJEc7lH1Is/UHJs3kn261I/AAAAAAAADYA/gQRAxHK2q_w/s1600/tileable_old_school_video_game_grass.jpg);
-  background-size: 30%;
+  background: url(../imagenes/campo.jpg);
+  background-repeat: repeat;
   position: relative;
 }
 .field .field__box {

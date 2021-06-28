@@ -67,10 +67,35 @@ capitanSeleccionado(captainsArray)
             <p>Tu capitan ${capitanAgregar.nombre} aumenta un 20% ${capitanAgregar.beneficio}</p>
             <button id="eliminar${capitanAgregar.id}" class="boton_eliminar-capitan"><i class="far fa-trash-alt"></i></button>
             `
-            capitanElegidoDiv.appendChild(div) 
+            capitanElegidoDiv.appendChild(div)
 
             const botonEliminar = document.getElementById(`eliminar${capitanAgregar.id}`)
-            console.log(botonEliminar)
+        
+                //SUMANDO EL PORCENTAJE CORRESPONDIENTE A LA MEDIA DE LOS STATS DE LOS JUGADORES CREADOS POR EL USUARIO
+             const vel = document.querySelector('#vel')
+             const fue = document.querySelector('#fue')
+             const agi = document.querySelector('#agi')
+             const ref = document.querySelector('#ref')
+
+             console.log(vel.innerText)
+
+             switch(capitanAgregar.id){
+                 case 1 :
+
+                 break
+
+                 case 2: 
+                 vel.innerText = vel.innerText + 'hola'
+                 break
+
+                 case 3: 
+
+                 break
+
+                 case 4: 
+
+                 break
+             }
 
             botonEliminar.addEventListener('click', ()=>{
                 const confirmar = confirm('ATENCION! Deseas eliminar a tu CAPITAN?')
@@ -83,11 +108,6 @@ capitanSeleccionado(captainsArray)
     
    
     }
-
-
-
-
-
 
 /////////////////////////////////////////////////////
 // BENEFICIO DE CAPITANES AL HACER HOVER FUNCIONES //
@@ -195,8 +215,6 @@ captainsArr.forEach(el => {
             const jugadoresJSON = JSON.stringify(jugadoresCreados)
             localStorage.setItem('jugadores_base', jugadoresJSON)
 
-            //console.log(jugadoresCreados)
-            
             //USER CARD CREATOR
             jugadoresCreados.map(el=> {
                 if(el.id == id){
@@ -247,7 +265,9 @@ captainsArr.forEach(el => {
                 userPlayersDiv.appendChild(div)
                 createdCards.push(div)
                 //Ejecuto esta funcion para que el jugador sea tomado por el documento, ya que al cargar el mismo, no se encuentra creado el elemento
-                addPlayer()
+                addUserPlayer()
+                //Ejecuto esta funcion para que me calcule nuevamente el promedio en la seccion STATS, cada vez que creo un jugador.
+                stats()
                 }else{
                    
                 }
@@ -328,7 +348,7 @@ captainsArr.forEach(el => {
     //////////////////////////////////////
 
 
-//const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS.)   
+//const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS POR EL USUARIO.)   
 
 const jugadorStandard = document.querySelectorAll('.jugador-standard')
 const containerPlayer = document.querySelectorAll('.player__item')
@@ -356,19 +376,28 @@ function addPlayer (){
                     }else if(el.classList[0] == 'goalkeeper' && pos.id == 1){
                         pos.appendChild(div)
                     }
+
+                    //Compruebo la PLANILLA y manejo el boton de ELEGIR CAPITAN
+                    buttonDisabled()
+                    
+                }else {
+                    
                 }
             
             }
+        
         }) 
 
     })
 
-    //AGREGANDO JUGADORES CREADOS POR EL USUARIO
-    
-    createdCards.forEach(card => {
-        card.addEventListener('click', ()=>{
+}
 
-            jugadoresCreados.map(el=> {
+    //AGREGANDO JUGADORES CREADOS POR EL USUARIO
+
+    function addUserPlayer (){
+        createdCards.forEach(card => {
+        card.addEventListener('click', ()=>{
+            jugadoresCreados.forEach(el=> {
                 if(el.id == card.id){
                     const div = document.createElement('div')
                     div.classList.add('card-container-canchita')
@@ -376,7 +405,6 @@ function addPlayer (){
                  
                     div.innerHTML += `
 
-            
                     <div class="media-container">
                         <p> ${el.media} </p>
                     </div>
@@ -410,9 +438,9 @@ function addPlayer (){
                         </div>
                     </div>
                     <img id="fifa_card" src="imagenes/goldCard.png" alt="">
-               
               
                 `
+
                   for (let pos of containerPlayer){
                     if(pos.children.length == 0){
                             if(card.classList[1] == 'del' && (pos.id == 11 || pos.id == 10 || pos.id == 9)){
@@ -424,20 +452,51 @@ function addPlayer (){
                         }else if(card.classList[1] == 'arq' && pos.id == 1){
                             pos.appendChild(div)
                         }
-                    }
-                
+
+                        //Compruebo la PLANILLA y manejo el boton de ELEGIR CAPITAN
+                        buttonDisabled()
+
+                        }else {
+                            
+                        }
+                    
                     }
 
                 }else{
-                  
+            
                 }
             })
+    
+        
         })
-    })
-
-}
-
+     })
+    }
+    
+addUserPlayer()
 addPlayer()
+
+//Esta funcion se encarga de deshabilitar el boton de ELEGIR CAPITAN, hasta que haya completado toda la PLANTILLA con JUGADORES
+function buttonDisabled () {
+    const positions  = containerPlayer
+    //Transforme el containerPlayer (Nodelist) a ARRAY, para poder usar los metodos.
+    const positionsArr = Array.from(positions)
+
+    const someBtnDisabled = positionsArr.some(el => el.children.length == 0)
+
+    if(someBtnDisabled){
+      const btnCap = document.querySelectorAll('.captainButton')
+      btnCap.forEach(el => {
+          el.disabled = true
+      })
+    }else{
+      const btnCap = document.querySelectorAll('.captainButton')
+      btnCap.forEach(el => {
+          el.disabled = false
+      })
+    } 
+  }
+
+  buttonDisabled()
 
 
  /* const random = Math.floor(Math.random() * containerPlayer.length);
@@ -460,28 +519,58 @@ addPlayer()
     
 
 
+    /////////////////////////////////////////////////////////////
+    // MANEJO DE LOS STATS DE JUGADORES CREADOS POR EL USUARIO //
+    ////////////////////////////////////////////////////////////
 
+      //const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS POR EL USUARIO.) 
+      
+      function stats () {
+        //Creo un ARRAY nuevo para cada caracteristica. 
+        //Velocidad
+        const players_velocidad = jugadoresCreados.map(el => {
+         return el.velocidad
+      })
+      let totvel = players_velocidad.reduce((finalSt, item) => {
+        return ((parseInt(item) + finalSt) / players_velocidad.length)
+     }, 0)
 
+        //Fuerza
+     const players_fuerza = jugadoresCreados.map(el => {
+        return el.fuerza
+     })
+     let totfue = players_fuerza.reduce((finalSt, item) => {
+        return ((parseInt(item) + finalSt) / players_fuerza.length)
+        }, 0)
 
+        //Agilidad
+     const players_agilidad = jugadoresCreados.map(el => {
+        return el.agilidad
+     })
+     let totagi = players_agilidad.reduce((finalSt, item) => {
+        return (((parseInt(item) + finalSt) / players_agilidad.length ))
+        }, 0)
 
+        //Reflejos
+     const players_reflejos = jugadoresCreados.map(el => {
+        return el.reflejos
+     })
+     let totref = players_reflejos.reduce((finalSt, item) => {
+        return ((parseInt(item) + finalSt) / players_reflejos.length)
+        }, 0)
 
+        const vel = document.querySelector('#vel')
+        const fue = document.querySelector('#fue')
+        const agi = document.querySelector('#agi')
+        const ref = document.querySelector('#ref')
 
+        vel.textContent = totvel
+        fue.textContent = totfue
+        agi.textContent = totagi
+        ref.textContent = totref
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      stats()
 
 
 
