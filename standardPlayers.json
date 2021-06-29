@@ -10,5 +10,5 @@
     {"src": "imagenes/ramos.png", "id": 1, "posicion": "defensor"},
     {"src": "imagenes/oblak.png", "id": 1, "posicion": "goalkeeper"},
     {"src": "imagenes/lloris.png", "id": 1, "posicion": "goalkeeper"},
-    {"src": "imagenes/alisson.png", "id": 1, "posicion": "goalkeeper"}
+    {"src": "imagenes/allison.png", "id": 1, "posicion": "goalkeeper"}
 ]

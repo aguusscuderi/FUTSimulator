@@ -174,6 +174,8 @@ captainsArr.forEach(el => {
     const def_container = $('#def-row')
     const arq_container = $('#arq-row')
 
+    console.log(del_container)
+
 
     $.get(`standardPlayers.json`, (res, sta)=> {
     if(sta === "success"){
@@ -185,7 +187,6 @@ captainsArr.forEach(el => {
         const displayList = (obj) => {
             obj.forEach(item => {
                 const {src, posicion} = item
-
                 const div = document.createElement('div')
                 div.setAttribute('class', `col-sm-12 col-md-4 col-lg-4 text-center jugador-container`)
                 div.innerHTML += `
@@ -207,10 +208,10 @@ captainsArr.forEach(el => {
                 }
                 
             });
+
+            //Ejecuto addPlayer() (LINEA 453), para que me reconozca los jugadores luego de haber cargado el programa, y asi poder agregarlos a la planilla.
+            addPlayer()
         }
-
-    
-
 
 
 //////////////////////////////////
@@ -314,9 +315,9 @@ captainsArr.forEach(el => {
                 const userPlayersDiv = document.querySelector('.user-players-div')
                 userPlayersDiv.appendChild(div)
                 createdCards.push(div)
-                //Ejecuto esta funcion para que el jugador sea tomado por el documento, ya que al cargar el mismo, no se encuentra creado el elemento
+                //Ejecuto esta funcion para que el jugador sea tomado por el documento, ya que al cargar el mismo, no se encuentra creado el elemento (LINEA 449)
                 addUserPlayer()
-                //Ejecuto esta funcion para que me calcule nuevamente el promedio en la seccion STATS, cada vez que creo un jugador.
+                //Ejecuto esta funcion para que me calcule nuevamente el promedio en la seccion STATS, cada vez que creo un jugador. (LINEA 579)
                 stats()
                 }else{
                    
@@ -400,13 +401,14 @@ captainsArr.forEach(el => {
 
 //const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS POR EL USUARIO.)   
 
-const jugadorStandard = document.querySelectorAll('.jugador-standard')
 const containerPlayer = document.querySelectorAll('.player__item')
 
 const userPlayerDiv = document.querySelector('.user-players-div')
 const userPlayerCard = userPlayerDiv.children
 
+
 function addPlayer (){
+    const jugadorStandard = document.querySelectorAll('.jugador-standard')
     //AGREGANDO LOS JUGADORES STANDARD
         jugadorStandard.forEach(el => {
         el.addEventListener('click', () => {
@@ -442,9 +444,8 @@ function addPlayer (){
 
 }
 
-    //AGREGANDO JUGADORES CREADOS POR EL USUARIO
-
-    function addUserPlayer (){
+//AGREGANDO JUGADORES CREADOS POR EL USUARIO
+function addUserPlayer () {
         createdCards.forEach(card => {
         card.addEventListener('click', ()=>{
             jugadoresCreados.forEach(el=> {
@@ -520,10 +521,10 @@ function addPlayer (){
         
         })
      })
-    }
+}
     
 addUserPlayer()
-addPlayer()
+
 
 //Esta funcion se encarga de deshabilitar el boton de ELEGIR CAPITAN, hasta que haya completado toda la PLANTILLA con JUGADORES
 function buttonDisabled () {
