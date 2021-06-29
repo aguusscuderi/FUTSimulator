@@ -163,6 +163,56 @@ captainsArr.forEach(el => {
 })
 
 
+
+//////////////////////////////
+/// CREACION DE JUGADORES ///
+///// CON AJAX-JQUERY //////   
+///////////////////////////
+
+    const del_container = $('#del-row')
+    const mid_container = $('#mid-row')
+    const def_container = $('#def-row')
+    const arq_container = $('#arq-row')
+
+
+    $.get(`standardPlayers.json`, (res, sta)=> {
+    if(sta === "success"){
+        let data = res
+        displayList(data)
+                }
+            })
+
+        const displayList = (obj) => {
+            obj.forEach(item => {
+                const {src, posicion} = item
+
+                const div = document.createElement('div')
+                div.setAttribute('class', `col-sm-12 col-md-4 col-lg-4 text-center jugador-container`)
+                div.innerHTML += `
+                    <img class="${posicion} jugador-standard" src=${src} alt="">
+                `
+                switch(item.posicion){
+                    case 'delantero':
+                        del_container.append(div)
+                        break
+                    case 'midfielder':
+                        mid_container.append(div)
+                        break
+                    case 'defensor':
+                        def_container.append(div)
+                        break
+                    case 'goalkeeper':
+                        arq_container.append(div)
+                        break
+                }
+                
+            });
+        }
+
+    
+
+
+
 //////////////////////////////////
 // USER CARD CREATOR ////////AND//
 /////////////////////////////////

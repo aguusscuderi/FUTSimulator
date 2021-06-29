@@ -1,0 +1,14 @@
+[
+    {"src": "imagenes/lewandowski.png", "id": 1, "posicion": "delantero"},
+    {"src": "imagenes/neymar.png", "id": 1, "posicion": "delantero"},
+    {"src": "imagenes/suarez.png", "id": 1, "posicion": "delantero"},
+    {"src": "imagenes/kimmich.png", "id": 1, "posicion": "midfielder"},
+    {"src": "imagenes/debruyne.png", "id": 1, "posicion": "midfielder"},
+    {"src": "imagenes/kroos.png", "id": 1, "posicion": "midfielder"},
+    {"src": "imagenes/koulibaly.png", "id": 1, "posicion": "defensor"},
+    {"src": "imagenes/chiellini.png", "id": 1, "posicion": "defensor"},
+    {"src": "imagenes/ramos.png", "id": 1, "posicion": "defensor"},
+    {"src": "imagenes/oblak.png", "id": 1, "posicion": "goalkeeper"},
+    {"src": "imagenes/lloris.png", "id": 1, "posicion": "goalkeeper"},
+    {"src": "imagenes/alisson.png", "id": 1, "posicion": "goalkeeper"}
+]
