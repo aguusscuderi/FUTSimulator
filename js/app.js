@@ -65,7 +65,7 @@ capitanSeleccionado(captainsArray)
 
             <img src="${capitanAgregar.img}" class="img-fluid" id="" alt="">
             <p>Tu capitan ${capitanAgregar.nombre} aumenta un 20% ${capitanAgregar.beneficio}</p>
-            <button id="eliminar${capitanAgregar.id}" class="boton_eliminar-capitan"><i class="far fa-trash-alt"></i></button>
+            <button style="border: none" id="eliminar${capitanAgregar.id}" class="bg-transparent boton_eliminar-capitan"><i class="text-white far fa-trash-alt"></i></button>
             `
             capitanElegidoDiv.appendChild(div)
 
@@ -77,23 +77,25 @@ capitanSeleccionado(captainsArray)
              const agi = document.querySelector('#agi')
              const ref = document.querySelector('#ref')
 
-             console.log(vel.innerText)
-
              switch(capitanAgregar.id){
                  case 1 :
-
+                    agi.innerText = (agi.innerText * (1+20/100)).toFixed(2)
+                    agi.style.color = 'black'
                  break
 
                  case 2: 
-                 vel.innerText = vel.innerText + 'hola'
+                    vel.innerText = (vel.innerText * (1+20/100)).toFixed(2)
+                    vel.style.color = 'black'
                  break
 
                  case 3: 
-
+                    fue.innerText = (fue.innerText * (1+20/100)).toFixed(2)
+                    fue.style.color = 'black'
                  break
 
                  case 4: 
-
+                    ref.innerText = (ref.innerText * (1+20/100)).toFixed(2)
+                    ref.style.color = 'black'
                  break
              }
 
@@ -102,6 +104,7 @@ capitanSeleccionado(captainsArray)
                 if(confirmar == true){
                     botonEliminar.parentElement.remove()
                     capitanElegido.shift()
+                    
                 }else{}
             }) 
         }
@@ -174,9 +177,6 @@ captainsArr.forEach(el => {
     const def_container = $('#def-row')
     const arq_container = $('#arq-row')
 
-    console.log(del_container)
-
-
     $.get(`standardPlayers.json`, (res, sta)=> {
     if(sta === "success"){
         let data = res
@@ -214,7 +214,7 @@ captainsArr.forEach(el => {
         }
 
 
-//////////////////////////////////
+///////////////////////////////////
 // USER CARD CREATOR ////////AND//
 /////////////////////////////////
 //////////////////////////
@@ -584,7 +584,7 @@ function buttonDisabled () {
       })
       let totvel = players_velocidad.reduce((finalSt, item) => {
         return ((parseInt(item) + finalSt) / players_velocidad.length)
-     }, 0)
+     }, 0).toFixed(2)
 
         //Fuerza
      const players_fuerza = jugadoresCreados.map(el => {
@@ -592,7 +592,7 @@ function buttonDisabled () {
      })
      let totfue = players_fuerza.reduce((finalSt, item) => {
         return ((parseInt(item) + finalSt) / players_fuerza.length)
-        }, 0)
+        }, 0).toFixed(2)
 
         //Agilidad
      const players_agilidad = jugadoresCreados.map(el => {
@@ -600,7 +600,7 @@ function buttonDisabled () {
      })
      let totagi = players_agilidad.reduce((finalSt, item) => {
         return (((parseInt(item) + finalSt) / players_agilidad.length ))
-        }, 0)
+        }, 0).toFixed(2)
 
         //Reflejos
      const players_reflejos = jugadoresCreados.map(el => {
@@ -608,7 +608,7 @@ function buttonDisabled () {
      })
      let totref = players_reflejos.reduce((finalSt, item) => {
         return ((parseInt(item) + finalSt) / players_reflejos.length)
-        }, 0)
+        }, 0).toFixed(2)
 
         const vel = document.querySelector('#vel')
         const fue = document.querySelector('#fue')
