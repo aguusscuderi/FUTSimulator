@@ -27,46 +27,59 @@ function capitanSeleccionado(array){
         const button = document.getElementById(`${el.id}`)
       
         button.addEventListener('click', ()=>{
-            const confirmacion = confirm(`¿Deseas elegir a ${el.apellido} como tu CAPITAN?`)
-            if(confirmacion == true){
-                //alert('Enhorabuena! Has seleccionado tu CAPITAN, puedes chequearlo en "STATS & FORMACION"')
-                Swal.fire({
-                    title: 'Atencion!',
-                    text: 'Enhorabuena! Has seleccionado tu CAPITAN, puedes chequearlo en "STATS & FORMACION',
-                    confirmButtonText: 'Entendido',
-                    confirmButtonColor: '#0b087d',
-                    timer: 3000,
-                    icon: 'confirm',
-                    customClass: {
+            Swal.fire({
+                title: 'Atencion',
+                text: `¿Deseas elegir a ${el.apellido} como tu CAPITAN`,
+                icon: 'success',
+                showConfirmButton: true,
+                showDenyButton: true,
+                denyButtonText: 'Cancelar',
+                denyButtonColor: '#0b087d',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#0b087d',
+                customClass: {
                     title:'sweet-title',
                     content: 'sweet-html',
-                    },
-                    showClass :{
-                        popup: 'swal2-show',
-                        backdrop: 'swal2-backdrop-show',
-                        icon: 'swal2-icon-show'
-                      }
-                    
-                })
-                seleccionCapitan(`${el.id}`)
-            }else{
-                //alert('Entendido! Puedes elegir otro CAPITAN')
-                Swal.fire({
-                    title: 'Atencion!',
-                    text: 'Entendido! Puedes elegir otro CAPITAN',
-                    customClass: {
-                    title:'sweet-title',
-                    content: 'sweet-html',
-                    },
-                    showClass :{
-                        popup: 'swal2-show',
-                        backdrop: 'swal2-backdrop-show',
-                        icon: 'swal2-icon-show'
-                      }
-                    
-                })
-            }
-            
+                    }
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    Swal.fire({
+                        title: 'Atencion!',
+                        text: 'Enhorabuena! Has seleccionado tu CAPITAN, puedes chequearlo en "STATS & FORMACION',
+                        confirmButtonText: 'Entendido',
+                        confirmButtonColor: '#0b087d',
+                        timer: 3000,
+                        icon: 'success',
+                        customClass: {
+                        title:'sweet-title',
+                        content: 'sweet-html',
+                        },
+                        showClass :{
+                            popup: 'swal2-show',
+                            backdrop: 'swal2-backdrop-show',
+                            icon: 'swal2-icon-show'
+                          }
+                    })
+
+                    seleccionCapitan(`${el.id}`)
+
+                }else{
+                    Swal.fire({
+                        title: 'Atencion!',
+                        text: 'Entendido! Puedes elegir otro CAPITAN',
+                        customClass: {
+                        title:'sweet-title',
+                        content: 'sweet-html',
+                        },
+                        showClass :{
+                            popup: 'swal2-show',
+                            backdrop: 'swal2-backdrop-show',
+                            icon: 'swal2-icon-show'
+                          }
+                        
+                    })
+                }
+            })  
          })
     })
 
@@ -102,7 +115,6 @@ capitanSeleccionado(captainsArray)
                   }
                 
             })
-            //alert('ATENCION! Ya tienes un capitan elegido, para modificarlo borra el que ya tienes!')
         }else{
             let capitanAgregar = captainsArray.filter(el => el.id == id)[0]
             capitanElegido.push(capitanAgregar)
@@ -150,12 +162,28 @@ capitanSeleccionado(captainsArray)
              }
 
             botonEliminar.addEventListener('click', ()=>{
-                const confirmar = confirm('ATENCION! Deseas eliminar a tu CAPITAN?')
-                if(confirmar == true){
-                    botonEliminar.parentElement.remove()
-                    capitanElegido.shift()
-                    
-                }else{}
+                Swal.fire({
+                    title: 'Atencion!',
+                    text: 'Deseas eliminar a tu CAPITAN?!', 
+                    showConfirmButton: true,
+                    showDenyButton: true,
+                    denyButtonText: 'Cancelar',
+                    denyButtonColor: '#0b087d',
+                    confirmButtonText: 'Entendido',
+                    confirmButtonColor: '#0b087d',
+                    icon: 'warning',
+                    customClass: {
+                    title:'sweet-title',
+                    content: 'sweet-html',
+                    }
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        botonEliminar.parentElement.remove()
+                        capitanElegido.shift()
+                    }else {
+
+                    }
+                })
             }) 
         }
     
@@ -272,21 +300,11 @@ captainsArr.forEach(el => {
 /////////////////////////         
 
     //CREANDO EL FORMULARIO
-    //const creadorCollapse = document.querySelector('#playerCreator-collapse') 
-
-    /*const imgPlayers = [
-        {img = "imagenes/ronaldoPng.png"},
-        {img = "imagenes/messiCard.png"}
-    ]
-    const random = Math.floor(Math.random() * imgPlayers.img);
-    let randomPosition = imgPlayers[random]*/
-
-
     const jugadoresCreados = []
     const createdCards = []
     const form = document.getElementById('playerCreator-form')
 
-    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad, id, position) {
+    function tuJugador (nombre, apellido, media, velocidad, fuerza, reflejos, agilidad, id, position, img) {
         this.nombre=nombre,
         this.apellido=apellido,
         this.media=media,
@@ -295,8 +313,18 @@ captainsArr.forEach(el => {
         this.reflejos=reflejos,
         this.agilidad=agilidad,
         this.id = id,
-        this.position = position
+        this.position = position,
+        this.img = img
     }
+
+       //Randoms PlayersImg ARRAY
+       let imgPlayers = [
+        {img : "imagenes/ronaldoPng.png"},
+        {img : "imagenes/messiCard.png"},
+        {img : "imagenes/lamelaPng.png"},
+        {img : "imagenes/maradonaPng.png"},
+        {img : "imagenes/pelePng.png"},
+    ]
     
 
     function formData() {
@@ -315,7 +343,6 @@ captainsArr.forEach(el => {
         let verificacionStats = statsAdded.every(x => (x >= 1) && (x <= 99))
 
         if((verificacionId == true) || (verificacionStats == false)){
-            //alert(`Algo esta mal! Por favor, revisa los STATS o el ID elegido`) 
             Swal.fire({
                 title: 'Atencion!',
                 icon: 'error',
@@ -330,6 +357,11 @@ captainsArr.forEach(el => {
             })
         }else{
             if(jugadoresCreados.length <= 5){
+                
+            const random = Math.floor(Math.random() * imgPlayers.length);
+            let randomPosition = imgPlayers[random]
+            let currentImg = randomPosition.img
+
             jugadoresCreados.push(new tuJugador(
                 form.querySelector('#nombre').value,
                 form.querySelector('#apellido').value,
@@ -339,8 +371,9 @@ captainsArr.forEach(el => {
                 form.querySelector('#reflejos').value,
                 form.querySelector('#agilidad').value,
                 form.querySelector('#id').value,
-                form.querySelector('#position').value
-
+                form.querySelector('#position').value,
+                currentImg
+                
             ))
 
             //JSON LOCALSTORAGE SAVING and VERIFICATION
@@ -348,22 +381,21 @@ captainsArr.forEach(el => {
             localStorage.setItem('jugadores_base', jugadoresJSON)
 
             //USER CARD CREATOR
-            jugadoresCreados.forEach(el=> {
+            jugadoresCreados.forEach(el => {
                 if(el.id == id){
                     const div = document.createElement('div')
-                    //div.setAttribute('class', `col-sm-12 col-md-6 col-lg-6`)
                     div.classList.add('card-container')
                     div.classList.add(`${el.position}`)
                     div.setAttribute('id', `${el.id}`)
                     div.innerHTML += `
 
-                
                     <div class="media-container">
                         <p> ${el.media} </p>
                     </div>
                     <div class="sep_line1"></div>
-                    <div class="nation-container"><img src="${el.media}" alt=""></div>
-                    <div class="playerPic-container"><img class="img_card" src="imagenes/messiCard.png" alt=""></div>
+                    <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
+                    <div class="playerPic-container"><img class="img_card" src=${el.img} alt=""></div>
+                    <div class="playerPos-container"><p>${(el.position).toUpperCase()}</p></div>
                     <div class="player-surname">
                         <p>${el.apellido}</p>
                     </div>
@@ -372,11 +404,11 @@ captainsArr.forEach(el => {
                     <div class="stats">
                         <div class="dri">
                             <p class="value">${parseInt(el.agilidad)}</p>
-                            <p class="name_value">DRI</p>
+                            <p class="name_value">AGI</p>
                         </div>
                         <div class="phy">
                             <p class="value">${parseInt(el.fuerza)}</p>
-                            <p class="name_value">PHY</p>
+                            <p class="name_value">FUE</p>
                         </div>
                         <div class="ref">
                             <p class="value">${parseInt(el.reflejos)}</p>
@@ -384,29 +416,30 @@ captainsArr.forEach(el => {
                         </div>
                         <div class="def">
                             <p class="value">${parseInt(el.velocidad)}</p>
-                            <p class="name_value">DEF</p>
+                            <p class="name_value">VEL</p>
                         </div>
                     </div>
                     <img id="fifa_card" src="imagenes/goldCard.png" alt="">
-               
-              
                 `
                 const userPlayersDiv = document.querySelector('.grid-row-players')
                 userPlayersDiv.appendChild(div)
                 createdCards.push(div)
-                //Ejecuto esta funcion para que el jugador sea tomado por el documento, ya que al cargar el mismo, no se encuentra creado el elemento (LINEA 449)
-                addUserPlayer()
+                 //Ejecuto esta funcion para que el jugador sea tomado por el documento, ya que al cargar el mismo, no se encuentra creado el elemento (LINEA 449)
+                    addUserPlayer()
                 //Ejecuto esta funcion para que me calcule nuevamente el promedio en la seccion STATS, cada vez que creo un jugador. (LINEA 579)
-                stats()
+                    stats()
                 }else{
-                   
+   
                 }
             })
+
+            
         }
-    }
-      
-      }) 
-    }
+       }    
+       
+    })
+
+}
 
     formData()
 
@@ -431,7 +464,8 @@ captainsArr.forEach(el => {
                </div>
                <div class="sep_line1"></div>
                <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
-               <div class="playerPic-container"><img class="img_card" src="imagenes/messiCard.png" alt=""></div>
+               <div class="playerPic-container"><img class="img_card" src=${el.img} alt=""></div>
+               <div class="playerPos-container"><p>${(el.position).toUpperCase()}</p></div>
                <div class="player-surname">
                    <p>${el.apellido}</p>
                </div>
@@ -440,11 +474,11 @@ captainsArr.forEach(el => {
                <div class="stats">
                    <div class="dri">
                        <p class="value">${el.agilidad}</p>
-                       <p class="name_value">DRI</p>
+                       <p class="name_value">AGI</p>
                    </div>
                    <div class="phy">
                        <p class="value">${el.fuerza}</p>
-                       <p class="name_value">PHY</p>
+                       <p class="name_value">FUE</p>
                    </div>
                    <div class="ref">
                        <p class="value">${el.reflejos}</p>
@@ -452,18 +486,21 @@ captainsArr.forEach(el => {
                    </div>
                    <div class="def">
                        <p class="value">${el.velocidad}</p>
-                       <p class="name_value">DEF</p>
+                       <p class="name_value">VEL</p>
                    </div>
                </div>
                <img id="fifa_card" src="imagenes/goldCard.png" alt="">
         
            `
-           const userPlayersDiv = document.querySelector('.user-players-div')
+           const userPlayersDiv = document.querySelector('.grid-row-players')
            userPlayersDiv.appendChild(div)
            createdCards.push(div)
            })
        }
+
+       addUserPlayer()
    }
+
    recuperacion()
 
 
@@ -478,10 +515,6 @@ captainsArr.forEach(el => {
 //const jugadoresCreados = [] (CORRESPONDE A LA VARIABLE QUE CONTIENE LOS JUGADORES CREADOS POR EL USUARIO.)   
 
 const containerPlayer = document.querySelectorAll('.player__item')
-
-const userPlayerDiv = document.querySelector('.user-players-div')
-const userPlayerCard = userPlayerDiv.children
-
 
 function addPlayer (){
     const jugadorStandard = document.querySelectorAll('.jugador-standard')
@@ -520,11 +553,13 @@ function addPlayer (){
 
 }
 
+
 //AGREGANDO JUGADORES CREADOS POR EL USUARIO
 function addUserPlayer () {
-        createdCards.forEach(card => {
+    createdCards.forEach(card => {
         card.addEventListener('click', ()=>{
-            jugadoresCreados.forEach(el=> {
+            jugadoresCreados.forEach(el => {
+                console.log(card)
                 if(el.id == card.id){
                     const div = document.createElement('div')
                     div.classList.add('card-container-canchita')
@@ -537,7 +572,8 @@ function addUserPlayer () {
                     </div>
                     <div class="sep_line1"></div>
                     <div class="nation-container"><img src="imagenes/argentinaIMG.jpg" alt=""></div>
-                    <div class="playerPic-container"><img class="player-img-canchita" src="imagenes/messiCard.png" alt=""></div>
+                    <div class="playerPic-container"><img class="player-img-canchita" src=${el.img} alt=""></div>
+                    <div class="playerPos-container"><p>${(el.position).toUpperCase()}</p></div>
                     <div class="player-surname">
                         <p>${el.apellido}</p>
                     </div>
@@ -546,11 +582,11 @@ function addUserPlayer () {
                     <div class="stats">
                         <div class="dri">
                             <p class="value">${el.agilidad}</p>
-                            <p class="name_value">DRI</p>
+                            <p class="name_value">AGI</p>
                         </div>
                         <div class="phy">
                             <p class="value">${el.fuerza}</p>
-                            <p class="name_value">PHY</p>
+                            <p class="name_value">FUE</p>
                         </div>
                         <div class="ref">
                             <p class="value">${el.reflejos}</p>
@@ -558,7 +594,7 @@ function addUserPlayer () {
                         </div>
                         <div class="def">
                             <p class="value">${el.velocidad}</p>
-                            <p class="name_value">DEF</p>
+                            <p class="name_value">VEL</p>
                         </div>
                     </div>
                     <img id="fifa_card" src="imagenes/goldCard.png" alt="">
@@ -596,7 +632,8 @@ function addUserPlayer () {
      })
 }
     
-addUserPlayer()
+//addUserPlayer()
+
 
 
 //Esta funcion se encarga de deshabilitar el boton de ELEGIR CAPITAN, hasta que haya completado toda la PLANTILLA con JUGADORES
@@ -621,10 +658,6 @@ function buttonDisabled () {
   }
 
   buttonDisabled()
-
-
- /* const random = Math.floor(Math.random() * containerPlayer.length);
-        let randomPosition = containerPlayer[random]*/
 
 
 

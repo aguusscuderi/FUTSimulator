@@ -163,8 +163,10 @@ h4 {
 
 .card-container {
   display: inline-block;
-  transform: scale(0.37);
+  transform: scale(0.37) translateY(-500px);
   transition: all 0.5s;
+  margin-bottom: -500px;
+  top: 0;
 }
 .card-container .media-container {
   position: fixed;
@@ -205,10 +207,16 @@ h4 {
   top: 150px;
   transform: translateX(257px);
   overflow: hidden;
-  /*img{
-      width: 100%;
-      object-fit: contain;
-  }*/
+}
+.card-container .playerPos-container {
+  position: fixed;
+  top: 347px;
+  transform: translateX(140px);
+}
+.card-container .playerPos-container p {
+  font-size: 30px;
+  margin: 0px;
+  font-weight: bold;
 }
 .card-container .img_card {
   width: 100%;
@@ -297,7 +305,7 @@ h4 {
 }
 
 .card-container:hover {
-  transform: scale(0.5);
+  transform: scale(0.42) translateY(-500px);
 }
 
 .card-container-canchita {
@@ -346,14 +354,20 @@ h4 {
   top: 25px;
   transform: translateX(46px);
   overflow: hidden;
-  /*img{
-      width: 100%;
-      object-fit: contain;
-  }*/
 }
 .card-container-canchita .img_card {
   width: 100%;
   object-fit: contain;
+}
+.card-container-canchita .playerPos-container {
+  position: fixed;
+  top: 88px;
+  font-weight: bold;
+  transform: translateX(32px);
+}
+.card-container-canchita .playerPos-container p {
+  font-size: 8px;
+  margin: 0px;
 }
 .card-container-canchita .player-surname {
   position: fixed;
@@ -455,6 +469,10 @@ body {
   font-family: Roboto;
 }
 
+#field-container {
+  overflow: hidden;
+}
+
 .field {
   top: 5vh;
   left: 2vw;
@@ -462,6 +480,7 @@ body {
   height: 123vh;
   background: url(../imagenes/campo.jpg);
   background-repeat: repeat;
+  overflow: hidden;
   position: relative;
 }
 .field .field__box {
@@ -572,8 +591,8 @@ body {
   object-fit: contain;
 }
 .field .field__box .player__item--gk {
-  bottom: 1%;
-  left: 45%;
+  left: 345.438px;
+  top: 808px;
 }
 .field .field__box .player__item--two {
   bottom: 25%;
@@ -588,32 +607,32 @@ body {
   left: 25%;
 }
 .field .field__box .player__item--five {
-  bottom: 42%;
-  right: 30%;
+  left: 527.797px;
+  top: 375.297px;
 }
 .field .field__box .player__item--six {
   bottom: 25%;
   left: 5%;
 }
 .field .field__box .player__item--seven {
-  bottom: 42%;
-  left: 30%;
+  left: 160.625px;
+  top: 372.297px;
 }
 .field .field__box .player__item--eight {
-  top: 30%;
-  left: 45%;
+  left: 344.438px;
+  top: 302.969px;
 }
 .field .field__box .player__item--nine {
-  top: 15%;
-  right: 5%;
+  left: 618.156px;
+  top: 120.984px;
 }
 .field .field__box .player__item--ten {
-  top: 15%;
-  left: 5%;
+  left: 84.2656px;
+  top: 114.984px;
 }
 .field .field__box .player__item--eleven {
-  top: 8%;
-  left: 45%;
+  left: 342.438px;
+  top: 0px;
 }
 
 .sweet-title {
@@ -633,6 +652,15 @@ body {
 
 .sweet-popup {
   background-color: yellow !important;
+}
+
+#players-btn {
+  background-color: #0b087d;
+  border: 1px solid white;
+}
+
+.grid-row-players {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=main.css.map */

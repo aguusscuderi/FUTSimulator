@@ -8,10 +8,6 @@
     overflow-x: hidden;
 }
 
-body {
-
-}
-
 h1 {
     text-align: center;
     font-weight: bold !important;
@@ -188,10 +184,13 @@ h4 {
 
 .card-container {
     display: inline-block;
-    transform: scale(0.37);
+    //transform: scale(0.37);
+    transform: scale(0.37) translateY(-500px);
     transition: all 0.5s;
+    margin-bottom: -500px;
+    top: 0;
     
-
+    
     .media-container {
         position: fixed;
         width: 120px;
@@ -234,11 +233,17 @@ h4 {
         top: 150px;
         transform: translateX(257px);
         overflow: hidden;
+    }
 
-        /*img{
-            width: 100%;
-            object-fit: contain;
-        }*/
+    .playerPos-container {
+        position: fixed;
+        top: 347px;
+        transform: translateX(140px);
+        p{
+            font-size: 30px; 
+            margin: 0px;
+            font-weight: bold;
+         }
     }
 
     .img_card {
@@ -343,7 +348,7 @@ h4 {
 }
 
 .card-container:hover {
-    transform: scale(0.5);
+    transform: scale(0.42) translateY(-500px);
 }
 
 
@@ -401,16 +406,22 @@ h4 {
         top: 25px;
         transform: translateX(46px);
         overflow: hidden;
-
-        /*img{
-            width: 100%;
-            object-fit: contain;
-        }*/
     }
 
     .img_card {
         width: 100%;
             object-fit: contain;
+    }
+
+    .playerPos-container {
+        position: fixed;
+        top: 88px;
+        font-weight: bold;
+        transform: translateX(32px);
+        p{
+           font-size: 8px; 
+           margin: 0px;
+        }
     }
 
     .player-surname {
@@ -542,6 +553,9 @@ h4 {
 body {
 	font-family: Roboto;
 }
+#field-container{
+    overflow: hidden;
+}
 .field {
 	top: 5vh;
 	left: 2vw;
@@ -549,8 +563,7 @@ body {
 	height: 123vh;
     background: url(../imagenes/campo.jpg);
     background-repeat:repeat;
-	//background: url(https://4.bp.blogspot.com/-JiJEc7lH1Is/UHJs3kn261I/AAAAAAAADYA/gQRAxHK2q_w/s1600/tileable_old_school_video_game_grass.jpg);
-	//background-size: 30%;
+    overflow: hidden;
 	position: relative;
 	.field__box {
 		width: 90%;
@@ -662,9 +675,9 @@ body {
             }
 		}
 		.player__item--gk {
-			bottom: 1%;
-			left: 45%;
-		}
+			left: 345.438px;
+            top: 808px;
+        }
 		.player__item--two {
 			bottom: 25%;
 			right: 5%;
@@ -678,32 +691,32 @@ body {
 			left: 25%;
 		}
 		.player__item--five {
-			bottom: 42%;
-			right: 30%;
+			left: 527.797px;
+            top: 375.297px;
 		}
 		.player__item--six {
 			bottom: 25%;
 			left: 5%;
 		}
 		.player__item--seven {
-			bottom: 42%;
-			left: 30%;
+            left: 160.625px;
+            top: 372.297px;
 		}
 		.player__item--eight {
-			top: 30%;
-			left: 45%;
+            left: 344.438px;
+            top: 302.969px;
 		}
 		.player__item--nine {
-			top: 15%;
-			right: 5%;
+            left: 618.156px;
+            top: 120.984px;
 		}
 		.player__item--ten {
-			top: 15%;
-			left: 5%;
+			left: 84.2656px;
+            top: 114.984px;
 		}
 		.player__item--eleven {
-			top: 8%;
-			left: 45%;
+            left: 342.438px;
+            top: 0px;
 		}
 	}
 }
@@ -727,4 +740,16 @@ body {
 
 .sweet-popup {
     background-color: yellow !important;
+}
+
+//
+
+#players-btn{
+    background-color: rgba(11,8,125,1);
+    border: 1px solid white;
+}
+
+
+.grid-row-players {
+    overflow: hidden;
 }
