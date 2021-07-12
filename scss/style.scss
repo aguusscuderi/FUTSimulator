@@ -142,19 +142,26 @@ h4 {
     background-color: #0b087d;;
 }*/
 
-
-.user-sec {
-    //background-color: #0b087d; ;
-    background-image: url(../imagenes/user-sec.png);
+.user-sec1 {
+    background-image: url(../imagenes/fondoNeymar.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.user-sec2{
+    background-image: url(../imagenes/messiFondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.user-sec {
 
     b {
-        color: black
+        color: white
     }
 
     label {
-        color: black;
+        color: white;
         margin: 10px;
         padding: 5px;
     }
@@ -239,23 +246,11 @@ h4 {
             object-fit: contain;
     }
 
-    .player-name {
-        position: fixed;
-        width: 151px;
-        top: 470px;
-        transform: translateX(147px);
-        p{
-            font-size: 45px;
-            margin: 0px;
-            font-weight: bold;
-        }
-    }
-
     .player-surname {
         position: fixed;
         width: 151px;
         top: 470px;
-        transform: translateX(330px);
+        transform: translateX(253px);
         p{
            font-size: 45px; 
            margin: 0px;
@@ -418,22 +413,11 @@ h4 {
             object-fit: contain;
     }
 
-    .player-name {
-        position: fixed;
-        top: 108px;
-        transform: translateX(33px);
-        p{
-            font-size: 15px;
-            font-weight: bold;
-            margin: 0px;
-        }
-    }
-
     .player-surname {
         position: fixed;
         top: 108px;
         font-weight: bold;
-        transform: translateX(81px);
+        transform: translateX(50px);
         p{
            font-size: 15px; 
            margin: 0px;
@@ -722,4 +706,25 @@ body {
 			left: 45%;
 		}
 	}
+}
+
+// SWEET ALERT
+
+.sweet-title {
+    color: white !important;
+    overflow: hidden;
+    padding: 15px !important;
+}
+
+.swal2-html-container {
+    font-weight: bold !important;
+    font-size: 25px;
+}
+
+.sweet-cancel {
+    overflow: hidden;
+}
+
+.sweet-popup {
+    background-color: yellow !important;
 }
